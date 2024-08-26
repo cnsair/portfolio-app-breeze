@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SummaryController;
 use App\Models\Education;
 //use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,10 +47,11 @@ Route::get('/uploads/show', [
 Route::get('/uploads/summary', function () {
     return view('uploads.summary');
 })->middleware(['auth', 'verified'])->name('summary');
-   
+
 Route::post('/uploads/summary', [
-        // SummaryController::class, 'store'
-    ])->name('summary.store');
+        SummaryController::class, 'store'
+    ])->name('summaries.store');
+
 
 
 //=======================================
@@ -76,7 +79,15 @@ Route::get('/uploads/experience', function () {
 })->middleware(['auth', 'verified'])->name('experience');
 
 
+Route::post('/uploads/experience', [
+    ExperienceController::class, 'store'
+])->name('experiences.store');
 
+
+
+//=======================================
+//Portfolio Routes
+//=======================================
 Route::get('/uploads/portfolio', function () {
     return view('uploads.portfolio');
 })->middleware(['auth', 'verified'])->name('portfolio');

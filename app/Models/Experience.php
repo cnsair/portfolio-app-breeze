@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Summary extends Model
+class Experience extends Model
 {
     use HasFactory;
 
@@ -15,10 +15,9 @@ class Summary extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'biography',
-        'address',
-        'phone',
-        'email',
+        'role',
+        'date',
+        'location',
+        'activity',
     ];
 }

@@ -79,6 +79,7 @@
                     <a href="{{ route('education') }}">Education</a>
                     <a href="{{ route('experience')}}">Experience</a>
                     <a href="{{ route('portfolio') }}">Portfolio</a>
+                    <a href="{{ route('show') }}">Show Posts</a>
                 </div>
             </div>
         </div>

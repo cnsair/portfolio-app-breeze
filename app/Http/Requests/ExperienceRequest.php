@@ -4,15 +4,15 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SummaryRequest extends FormRequest
+class ExperienceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
-    // public function authorize(): bool
-    // {
-    //     return false;
-    // }
+    public function authorize(): bool
+    {
+        return false;
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -22,11 +22,10 @@ class SummaryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:5|max:40',
-            'biography' => 'required|max:1000',
-            'address' => 'required|max:200',
-            'phone' => 'required|max:50',
-            'email' => 'required|max:100'
+            'role' => 'required|max:50',
+            'date' => 'required|max:20',
+            'location' => 'required|max:50',
+            'activity' => 'required|max:1000'
         ];
     }
 }

@@ -23,19 +23,25 @@
                             @csrf
                         </form>
 
-                        <form method="post" action="{{ route('summary.store') }}" class="mt-6 space-y-6">
+                        <form method="post" action="{{ route('summaries.store') }}" class="mt-6 space-y-6">
                             @csrf
 
                             <div>
-                                <x-input-label for="bio" :value="__('Bio')" />
-                                <textarea style="background-color: rgb(17 24 39); color: #ffffff;" id="bio" name="bio" type="text" class="mt-1 block w-full" required autofocus autocomplete="bio"></textarea>
-                                <x-input-error class="mt-2" :messages="$errors->get('bio')" />
+                                <x-input-label for="role" :value="__('Role')" />
+                                <x-text-input id="role" name="role" type="text" class="mt-1 block w-full" required autocomplete="role" />
+                                <x-input-error class="mt-2" :messages="$errors->get('role')" />
                             </div>
 
                             <div>
-                                <x-input-label for="location" :value="__('Location')" />
-                                <x-text-input id="location" name="location" type="text" class="mt-1 block w-full" required autocomplete="location" />
-                                <x-input-error class="mt-2" :messages="$errors->get('location')" />
+                                <x-input-label for="biography" :value="__('Biography')" />
+                                <textarea style="background-color: rgb(17 24 39); color: #ffffff;" id="biography" name="biography" type="text" class="mt-1 block w-full" required autofocus autocomplete="bio"></textarea>
+                                <x-input-error class="mt-2" :messages="$errors->get('biography')" />
+                            </div>
+
+                            <div>
+                                <x-input-label for="address" :value="__('Address')" />
+                                <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" required autocomplete="address" />
+                                <x-input-error class="mt-2" :messages="$errors->get('address')" />
                             </div>
 
                             <div>
@@ -53,14 +59,14 @@
                             <div class="flex items-center gap-4">
                                 <x-primary-button>{{ __('Create') }}</x-primary-button>
 
-                                @if (session('status') === 'profile-updated')
+                                @if (session('status') === 'summary-updated')
                                     <p
                                         x-data="{ show: true }"
                                         x-show="show"
                                         x-transition
                                         x-init="setTimeout(() => show = false, 2000)"
                                         class="text-sm text-gray-600 dark:text-gray-400"
-                                    >{{ __('Saved.') }}</p>
+                                    >{{ __('Summary Added.') }}</p>
                                 @endif
                             </div>
                         </form>
