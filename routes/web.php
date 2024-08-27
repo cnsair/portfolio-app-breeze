@@ -3,10 +3,17 @@
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShowController;
 use App\Http\Controllers\SummaryController;
 use App\Models\Education;
 //use Illuminate\Http\Request;
+use App\Models\Summary;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+
+
+
+
 
 Route::get('/', function () {
     return view('home');
@@ -35,7 +42,7 @@ Route::get('/dashboard', function () {
 //Show Routes
 //=======================================
 Route::get('/uploads/show', [
-    EducationController::class, 'index'
+    ShowController::class, 'showInDashboard'
 ])->middleware(['auth', 'verified'])->name('show');
 
 
@@ -44,15 +51,31 @@ Route::get('/uploads/show', [
 //Summary Routes
 //=======================================
 
-Route::get('/uploads/summary', function () {
-    return view('uploads.summary');
+Route::get('/uploads/summary', function (Summary $summary) {
+    return view('uploads.summary', [
+        'summaries' => $summary ]);
 })->middleware(['auth', 'verified'])->name('summary');
+
+// Route::get("/uploads/summary", function () {
+//     return "It came here";
+// })->name("summary.store");
 
 Route::post('/uploads/summary', [
         SummaryController::class, 'store'
     ])->name('summaries.store');
 
+Route::put('/uploads/edit-summary', [
+        SummaryController::class, 'update'
+    ])->name('summaries.update');
 
+//Route to Delete an item form the database
+// Route::delete('/tasks/{task}', function (Task $task) {
+
+//     $task->delete();
+//     return redirect()->route('tasks.index')
+//     ->with('success','task successfully deleted');
+
+// })->name('tasks.destroy');
 
 //=======================================
 //Education Routes

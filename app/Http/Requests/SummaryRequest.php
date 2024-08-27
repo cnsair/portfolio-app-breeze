@@ -9,10 +9,10 @@ class SummaryRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    // public function authorize(): bool
-    // {
-    //     return false;
-    // }
+    public function authorize(): bool
+    {
+        return true;
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -22,11 +22,11 @@ class SummaryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:5|max:40',
+            'myname' => 'required|min:2|max:50',
             'biography' => 'required|max:1000',
-            'address' => 'required|max:200',
+            'address' => 'required|max:100',
             'phone' => 'required|max:50',
-            'email' => 'required|max:100'
+            'email' => 'required|max:50'
         ];
     }
 }

@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
 
-            $table->text('role');
-            $table->text('date');
+            $table->string('role');
+            $table->string('date');
             $table->string('location');
-            $table->integer('activity');
+            $table->text('activity');
 
             $table->timestamps();
         });

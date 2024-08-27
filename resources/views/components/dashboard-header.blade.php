@@ -38,5 +38,10 @@
             href="{{ route('portfolio') }}" 
         >Portfolio</a>
 
+        <a class="{{ $active === route('show') ? 'active' : "" }}
+            space font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight pass" 
+            href="{{ route('show') }}" 
+        >Show Posts</a>
+
     </div>
 </x-slot>

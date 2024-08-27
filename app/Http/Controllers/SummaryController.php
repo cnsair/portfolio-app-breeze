@@ -15,9 +15,13 @@ class SummaryController extends Controller
      */
     public function index()
     {
-        return view('uploads.show', [
-            'summary' => Summary::all()]
-        );
+        // return view('uploads.show', [
+        //     'summaries' => Summary::all()]
+        // );
+
+        // dd($summaries);
+        //$summaries = Summary::all();
+        // return view('uploads.show', ['summary' => $summaries]);
     }
 
     /**
@@ -25,7 +29,7 @@ class SummaryController extends Controller
      */
     public function create()
     {
-        //
+        return view('uploads.summary');
     }
 
     /**
@@ -36,14 +40,13 @@ class SummaryController extends Controller
         $request->user()->fill($request->validated());
 
         $summaries = new Summary();
-        $summaries->name = $request->input('name');
+        $summaries->myname = $request->input('myname');
         $summaries->biography = $request->input('biography');
         $summaries->address = $request->input('address');
         $summaries->phone = $request->input('phone');
         $summaries->email = $request->input('email');
         $summaries->save();
 
-        dd($summaries);
         return Redirect::route('summaries.store')->with('status', 'summary-updated');
     }
 

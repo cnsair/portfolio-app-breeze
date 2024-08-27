@@ -15,9 +15,9 @@ class ExperienceController extends Controller
      */
     public function index()
     {
-        return view('uploads.show', [
-            'experience' => Experience::all()]
-        );
+        // return view('uploads.show', [
+        //     'experience' => Experience::all()]
+        // );
     }
 
     /**
@@ -25,7 +25,7 @@ class ExperienceController extends Controller
      */
     public function create()
     {
-        //
+        return view('uploads.experience');
     }
 
     /**

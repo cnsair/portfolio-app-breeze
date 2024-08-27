@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('summaries', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
+            $table->string('myname');
             $table->text('biography');
             $table->string('address');
-            $table->integer('phone');
+            $table->text('phone');
             $table->string('email');
-            
+
             $table->timestamps();
         });
     }

@@ -34,10 +34,13 @@
                                     <option value="0">Graduated</option>
                                 </select>
                                 <x-input-error class="mt-2" :messages="$errors->get('status')" />
+                                @error('status') <!-- To give a condition, you use the Blade Directive "@/class -->
+                                    <p class="error">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div>
-                                <x-input-label for="date" :value="__('Date Entered - Date Left (Present)')" />
+                                <x-input-label for="date" :value="__('Date Entered - Date Left/(Present)')" />
                                 <x-text-input id="date" name="date" type="text" class="mt-1 block w-full" required autocomplete="date" />
                                 <x-input-error class="mt-2" :messages="$errors->get('date')" />
                             </div>

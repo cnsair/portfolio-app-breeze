@@ -15,7 +15,7 @@
                     <section>
                         <header>
                             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                                {{ __('Summary') }}
+                                {{ __('Edit Summary') }}
                             </h2>
                         </header>
 
@@ -23,7 +23,7 @@
                             @csrf
                         </form>
 
-                        <form method="post" action="{{ route('summaries.store') }}" class="mt-6 space-y-6">
+                        <form method="post" action="{{ route('summaries.edit') }}" class="mt-6 space-y-6">
                             @csrf
 
                             <div>

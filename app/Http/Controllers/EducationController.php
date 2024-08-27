@@ -24,9 +24,9 @@ class EducationController extends Controller
         // );
         // return view('uploads.show', ['education' => $education]);
         
-        return view('uploads.show', [
-            'education' => Education::all()]
-        );
+        // return view('uploads.show', [
+        //     'education' => Education::all()]
+        // );
 
         // $education = DB::table('education')->select('status','date','course', 'activity')->get();
     }
@@ -45,7 +45,6 @@ class EducationController extends Controller
     public function store(EducationRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
-        //$request->user()->save();
 
         $educations = new Education();
         $educations->status = $request->input('status');
