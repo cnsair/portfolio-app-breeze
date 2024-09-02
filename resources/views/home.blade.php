@@ -6,11 +6,11 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>{{ 'Chisom Samson | ' .env('APP_NAME') }}</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="a seasoned PHP laravel software engineer" name="description">
+  <meta content="software engineer, web developer, php, sql, javascript, laravel, css, html" name="keywords">
 
-   <!-- Favicons -->
-   <link href="assets/img/favicon.png" rel="icon">
+  <!-- Favicons -->
+  <link href="assets/img/moi-favicon.jpg" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -53,7 +53,8 @@
           <li><a class="nav-link" href="#about">About</a></li>
           <li><a class="nav-link" href="#resume">Resume</a></li>
           <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li>
+          <li><a class="nav-link" href="#testimonial">Testimonials</a></li>
+          <li><a class="nav-link" href="#contact">Contact Me</a></li>
 		  <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
          
         </ul>
@@ -64,13 +65,9 @@
         <a target="_blank" href="https://g.dev/cnsair" class="google"><i class="bi bi-google"></i></a>
         <a target="_blank" href="https://t.me/cnsair/" class="telegram"><i class="bi bi-telegram"></i></a>
         <a target="_blank" href="https://instagram.com/cnsair" class="instagram"><i class="bi bi-instagram"></i></a>
-        
         <a target="_blank" href="https://twitter.com/cnsair" class="twitter"><i class="bi bi-twitter"></i></a>
-        <!-- <a href="https://messenger.com/" class="messenger"><i class="bi bi-messenger"></i></a> -->
         <a target="_blank" href="https://facebook.com/samson.chisom/" class="facebook"><i class="bi bi-facebook"></i></a> 
         <a target="_blank" href="https://www.github.com/cnsair" class="github"><i class="bi bi-github"></i></a>
-        <!-- <a href="https://www.youtube.com/channel/UCVlWiXd9VXXDvJHoPTFz2GQ/" class="youtube"><i
-            class="bi bi-youtube"></i></a> -->
         <a target="_blank" href="https://www.linkedin.com/in/samson-chisom/" class="linkedin"><i class="bi bi-linkedin"></i></a>
         <a target="_blank" href="https://www.reddit.com/user/cnsair" class="reddit"><i class="bi bi-reddit"></i></a>
       </div>
@@ -92,53 +89,68 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4" data-aos="fade-right">
+          <div class="col-lg-4" data-aos="fade-right">
             <img style="border-radius: 50%;" height="100%" width="100%" src="assets/img/moi_1.jpg" class="img-fluid" alt="">
-            </div>
+          </div>
+
+          @forelse ($summary_section as $summary)
+
             <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Software Engineer &amp; Designer</h3>
-            <p class="fst-italic">
-                Hello, I am Chisom Samson Nwachukwu...<br/>
+              <h3>Software Engineer &amp; Graphic Designer</h3>
+              <p class="fst-italic">
+                  Hello, I am {{ $summary->myname }}...<br/>
 
-                A result-driven PHP Software Engineer with 7 years of experience. Loves clean and elegant code. Has solely built and assisted from start to finish many web applications ranging from simple blogs to complex eCommerce. Equipped with an excellent understanding of Web 3 and blockchain technology. Tech savvy and a good team player.
-            </p>
-            <div class="row">
-                <div class="col-lg-6">
+                  {{ $summary->biography }}
+              </p>
+              <div class="row">
+                  <div class="col-lg-6">
+                    <ul>
+                        <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>March 8</span></li>
+                        <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a
+                            href="#">chisomsamson.me</a></span></li>
+                        <li><i class="bi bi-chevron-right"></i> 
+                          <strong>WhatsApp:</strong>
+                          @php
+                            $phone = $summary->phone;
+                            $exp_phone = explode("|", "$phone" );
+                          @endphp
+
+                          @foreach ( $exp_phone as $phone )
+                            <span>
+                                <a target="_blank" href="https://wa.me/{{ $phone }}">{{ $phone }}</a>
+                            </span>
+                          @endforeach
+                        </li>
+                        <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> 
+                          <span><a href="#">{{ $summary->address }}</a></span>
+                        </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6">
                   <ul>
-                      <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>March 8</span></li>
-                      <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a
-                          href="index.html">chisomsamson.me</a></span></li>
-                      <li><i class="bi bi-chevron-right"></i> 
-                      <strong>WhatsApp:</strong> 
-                      <span>
-                          <a target="_blank" href="https://wa.me/2347033229178">(+234) 703 322 9178 </a>
-                      </span>
+                      <li><i class="bi bi-chevron-right"></i> <strong>Profession:</strong> <span>Software engineer</span></li>
+                      <li><i class="bi bi-chevron-right"></i> <strong>Degrees:</strong> <span>Information Technology,<br/> Computer Science</span></li>
+                      <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span><a
+                          href="mailto:{{ $summary->email }}">{{ $summary->email }}</a></span>
                       </li>
-                      <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> 
-                        <span><a href="#">Ogun State, Nigeria</a></span>
-                      </li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                <ul>
-                    <li><i class="bi bi-chevron-right"></i> <strong>Profession:</strong> <span>Software engineer</span></li>
-                    <li><i class="bi bi-chevron-right"></i> <strong>Degrees:</strong> <span>Information Technology,<br/> Computer Science</span></li>
-                    <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span><a
-                        href="mailto:Samsondestined@gmail.com">Samsondestined@gmail.com</a></span>
-                    </li>
 
-                </ul>
-                </div>
+                  </ul>
+                  </div>
+              </div>
+              <p>
+                  Currently a Technical Co-founder at Africa Blockchain Consortium & Digital Economy. I’m interested in Blockchain, ML, AI, Advanced Algorithms.
+              </p>
+              <p>
+                  I am also interested in Cyber Security and I like to play with Hardware. <br>
+                  Feel free to reach out for any inquiry.
+              </p>
+                  
             </div>
-            <p>
-                Currently a Technical Co-founder at Africa Blockchain Consortium & Digital Economy. I’m interested in Blockchain, ML, AI, Advanced Algorithms.
-            </p>
-            <p>
-                I am also interested in Cyber Security and I like to play with Hardware. <br>
-                Feel free to reach out for any inquiry.
-            </p>
-                
-            </div>
+            
+          @empty
+              <p>Nothing. Please check back</p>
+          @endforelse
+
         </div>
 
     </div><!-- End About Me -->
@@ -371,10 +383,241 @@
 
     </div><!-- End Interests -->
 
+  </section><!-- End About Section -->
 
 
 
 
+
+
+
+    
+
+
+
+
+
+  <!-- ======= Resume Section ======= -->
+  <section id="resume" class="resume">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Resume</h2>
+        <p>Check My Resume</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <h3 class="resume-title">Sumary</h3>
+
+          @forelse ($summary_section as $summary)
+
+            <div class="resume-item pb-0">
+              <h4>{{ $summary->myname }}</h4>
+              <p>
+                <em>{{ $summary->biography }}</em>
+              </p>
+              <p>
+              <ul>
+                <li>{{ $summary->address }}</li>
+                <li>{{ $summary->phone }}</li>
+                <li>{{ $summary->email }}</li>
+              </ul>
+              </p>
+            </div>
+            
+          @empty
+              <p>Nothing. Please check back</p>
+          @endforelse
+
+
+          <h3 class="resume-title">Education</h3>
+
+          @forelse ($education_section as $education)
+
+            <div class="resume-item">
+              <h4>
+                @if ( $education->status == 1 )
+                    Attending College 
+                @else
+                    Graduated College
+                @endif
+              </h4>
+              <h5>{{ $education->date }}</h5>
+              <p><em>{{ $education->course }}</em></p>
+              <p><em>{{ $education->school }}</em></p>
+              <p>
+                <ul>
+                  @php
+                      $edu = $education->activity;
+                      $explode = explode('|', $edu);
+                  @endphp
+
+                  @foreach ( $explode as $edu )
+                      <li>{{ $edu }}</li>
+                  @endforeach
+                </ul>
+              </p>
+            </div>
+            
+          @empty
+              <p>Nothing. Please check back</p>
+          @endforelse
+          
+        </div><!-- col-lg-6 -->
+
+
+        <div class="col-lg-6">
+          <h3 class="resume-title">Professional Experience</h3>
+
+          @forelse ( $experience_section as $experience )
+		  
+            <div class="resume-item">
+              <h4>{{ $experience->role }}</h4>
+              <h5>{{ $experience->date }}</h5>
+              <p><em>{{ $experience->location }}</em></p>
+              <p>
+                <ul>
+                  @php
+                      $pro = $experience->activity;
+                      $explode = explode('|', $pro);
+                  @endphp
+
+                  @foreach ( $explode as $prof )
+                      <li>{{ $prof }}</li>
+                  @endforeach
+                </ul>
+              </p>
+            </div>
+            
+          @empty
+            <p>Nothing. Please check back</p>
+          @endforelse
+		  
+        </div>
+        
+        <!-- ==================================
+                        RESUME SECTION 
+        ======================================-->
+        @forelse ( $resume_section as $resume )
+
+          <div class="resume-item">
+            <h6>{{ $resume->title }}</h6>
+            
+            @php
+                $file = $resume->file;
+                $file_url = \Illuminate\Support\Facades\Storage::url("$file");
+                $file_ext = pathinfo($file, PATHINFO_EXTENSION);
+            @endphp
+          
+            @if ( $file_ext == 'pdf' || $file_ext == 'docx' )
+                <a href="{{ $file_url }}" class="text-center" download >
+                  <button type="button">Download Resume</button>
+                </a>
+            @endif
+          </div>
+        @empty
+          <p>Nothing. Please check back</p>
+        @endforelse
+
+      </div>
+
+    </div>
+  </section><!-- End Resume Section -->
+
+
+
+
+
+
+  
+
+
+
+
+
+  <!-- ======= Portfolio Section ======= -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Portfolio</h2>
+        <p>My Works</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <ul id="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-web">Web</li>
+            <li data-filter=".filter-graphics">Graphics</li>
+            <li data-filter=".filter-others">Others</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row portfolio-container">
+
+        @forelse ($portfolio_section as $portfolio)
+ 
+          @php
+              $file = $portfolio->file;
+              $file_url = \Illuminate\Support\Facades\Storage::url("$file");
+              $file_ext = pathinfo($file, PATHINFO_EXTENSION);
+          @endphp
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $portfolio->project }}">
+            <div class="portfolio-wrap">
+        
+              @if ( $file_ext == 'pdf' )
+                <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="Image not available">
+              @else
+                <img src="{{ $file_url }}" class="img-fluid" alt="{{ $portfolio->name }}">
+              @endif
+
+              <div class="portfolio-info">
+                <h4>{{ $portfolio->name }}</h4>
+                <p>{{ $portfolio->project }}</p>
+                <div class="portfolio-links">
+
+                  @if ( $file_ext == 'pdf' )
+                    <!-- do nothing -->
+                  @else
+                    <a href="{{ $file_ext == "pdf" ? "#Not an image" : $file_url }}" data-gallery="portfolioGallery" target="_blank" class="portfolio-lightbox" title="{{ $portfolio->name }}"><i class="bx bx-plus"></i></a>
+                  @endif
+
+                  <a href="{{ $portfolio->web_address ? $portfolio->web_address : "#No web address" }}" target="_blank" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
+                    class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        @empty
+            <p>Nothing. Please check back</p>
+        @endforelse
+
+      </div>
+
+    </div>
+  </section><!-- End Portfolio Section -->
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+  <!-- ======= Resume Section ======= -->
+  <section id="testimonial" class="resume">
+    <div class="container"></div>
 
 
 
@@ -424,319 +667,11 @@
 
 
 
-    </section><!-- End About Section -->
 
 
-
-
-
-
-
-    
-
-
-
-
-
-  <!-- ======= Resume Section ======= -->
-  <section id="resume" class="resume">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Resume</h2>
-        <p>Check My Resume</p>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-6">
-          <h3 class="resume-title">Sumary</h3>
-          <div class="resume-item pb-0">
-            <h4>Mahmudur Rahman Labib</h4>
-            <p><em>Innovative and deadline-driven Developer &amp; Designer with 3+ years of experience developing and designing 
-			user-centered digital/print marketing material from initial concept to final, polished deliverable.</em>
-            </p>
-            <p>
-            <ul>
-              <li> Madaripur 7900, Dhaka, Bangladesh</li>
-              <li>(+880) 196-2181171</li>
-              <li>labibrahman555@gmail.com</li>
-            </ul>
-            </p>
-          </div>
-
-          <h3 class="resume-title">Education</h3>
-		  <div class="resume-item">
-            <h4>Attending College</h4>
-            <h5>2021 - Present</h5>
-			<p><em>Bachelor of Engineering, Software Engineering.</em></p>
-            <p><em>Tampere University of Applied Sciences, Tampere, Finland</em></p>
-            <p>Currently Studying Software Engineering At TAMK.</p>
-          </div>
-          <div class="resume-item">
-            <h4>Graduated College</h4>
-            <h5>2018 - 2020</h5>
-            <p><em>Government Laboratory High School &amp; College, Dhaka-1205, Dhaka</em></p>
-			<p><em>Higher Secondary Certificate   (GPA - 5.00)</em></p>
-            <p>Studied National Curriculm For Higher Secondary Certificate Dirceted By NCTB
-			</p>
-          </div>
-          <div class="resume-item">
-            <h4>Graduated High School</h4>
-            <h5>2013 - 2018</h5>
-            <p><em>United Islamia Government High School, Madaripur</em></p>
-			<p><em>Secondary School Certificate   (GPA - 5.00)</em></p>
-            <p>Studied National Curriculm For Secondary School Certificate Dirceted By NCTB
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <h3 class="resume-title">Professional Experience</h3>
-		  
-		   <div class="resume-item">
-            <h4>Chief Technology Officer</h4>
-            <h5>2020 - Present</h5>
-            <p><em>Binduproyas, Madaripur, Bangladesh </em></p>
-            <p>
-            <ul>
-              <li>Build and managed the Website for the organization and increased social media lead generation by 61% year-over-year.</li>
-              <li>Lead in the design, development, and implementation of the graphic, layout, and production
-                communication materials
-              </li>
-              <li>Supervise the assessment of all digital contents in order to ensure quality and accuracy of the
-                content</li>
-            </ul>
-            </p>
-          </div>
-		  
-          <div class="resume-item">
-            <h4>Project Manager</h4>
-            <h5>2019 - Present</h5>
-            <p><em>XynosLab, Dhaka, Bangladesh </em></p>
-            <p>
-            <ul>
-              <li>Lead in the design, development, and implementation of the graphic, layout, and production
-                communication materials</li>
-              <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project.
-              </li>
-              <li>Oversee the efficient use of production project budgets ranging from $200 - $2500</li>
-            </ul>
-            </p>
-          </div>
-		  
-          <div class="resume-item">
-            <h4>Graphic Design Specialist</h4>
-            <h5>2017 - Present</h5>
-            <p><em>YES Bangladesh, Dhaka, Bangladesh</em></p>
-            <p>
-            <ul>
-              <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and
-                advertisements).</li>
-              <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-              <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-              <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-            </ul>
-            </p>
-          </div>
-        </div>
-        <a href="https://drive.google.com/uc?id=191_hz_cDfqlfOWZWZt7pP3QK71fXqRG-&amp;export=download"
-          class="text-center">
-          <button type="button">Download Resume</button>
-        </a>
-      </div>
-
-    </div>
-  </section><!-- End Resume Section -->
-
-
-
-
-
-
-  
-
-
-
-
-
-  <!-- ======= Portfolio Section ======= -->
-  <section id="portfolio" class="portfolio">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Portfolio</h2>
-        <p>My Works</p>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12 d-flex justify-content-center">
-          <ul id="portfolio-flters">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-card">Card</li>
-            <li data-filter=".filter-web">Web</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="row portfolio-container">
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 1</h4>
-              <p>App</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery"
-                  class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                  class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery"
-                  class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                  class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 2</h4>
-              <p>App</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery"
-                  class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                  class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Card 2</h4>
-              <p>Card</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery"
-                  class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                  class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 2</h4>
-              <p>Web</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery"
-                  class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                  class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 3</h4>
-              <p>App</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery"
-                  class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                  class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Card 1</h4>
-              <p>Card</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"
-                  class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                  class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Card 3</h4>
-              <p>Card</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"
-                  class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                  class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery"
-                  class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                  class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
 
     </div>
   </section><!-- End Portfolio Section -->
-
-
-
-
-
-
-
-
-
 
 
 
@@ -751,144 +686,88 @@
         <p>Contact Me</p>
       </div>
 
-      <div class="row mt-2">
+      @forelse ($summary_section as $summary)
 
-        <div class="col-md-6 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-map"></i>
-            <h3>My Address</h3>
-            <p> <a href="https://www.google.com/maps/place/23.16722295465147,90.20628874017304">Madaripur Sadar,
-                Madaripur, Dhaka, Bangladesh</a></p>
-          </div>
-        </div>
-
-        <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-share-alt"></i>
-            <h3>Social Profiles</h3>
-            <div class="social-links">
-              <a href="https://g.dev/MahmudurRahmanLabib" class="google"><i class="bi bi-google"></i></a>
-              <a href="https://t.me/MahmudurRahmanLabib/" class="telegram"><i class="bi bi-telegram"></i></a>
-              <!--
-		<a href="https://t.me/MahmudurRahmanLabib/" class="twitter"><i class="bi bi-twitter"></i></a>
-		<a href="https://instagram.com/" class="instagram"><i class="bi bi-instagram"></i></a>
-		<a href="https://messenger.com/" class="messenger"><i class="bi bi-messenger"></i></a>
-		<a href="https://facebook.com/MahmudurRahmanLabib/" class="facebook"><i class="bi bi-facebook"></i></a> -->
-              <a href="https://www.github.com/mahmudurrahmanlabib" class="github"><i class="bi bi-github"></i></a>
-              <a href="https://www.youtube.com/channel/UCVlWiXd9VXXDvJHoPTFz2GQ/" class="youtube"><i
-                  class="bi bi-youtube"></i></a>
-              <a href="https://www.linkedin.com/in/mahmudurrahmanlabib/" class="linkedin"><i
-                  class="bi bi-linkedin"></i></a>
-              <a href="https://www.reddit.com/user/LabibRahman000" class="reddit"><i class="bi bi-reddit"></i></a>
+        <div class="row mt-2">
+        
+          <div class="col-md-6 d-flex align-items-stretch">
+            <div class="info-box">
+              <i class="bx bx-map"></i>
+              <h3>My Address</h3>
+              <p> <a href="#">{{ $summary->address }}</a></p>
             </div>
           </div>
+
+          <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
+            <div class="info-box">
+              <i class="bx bx-share-alt"></i>
+              <h3>Social Profiles</h3>
+              <div class="social-links">
+                <a target="_blank" href="https://g.dev/cnsair" class="google"><i class="bi bi-google"></i></a>
+                <a target="_blank" href="https://t.me/cnsair/" class="telegram"><i class="bi bi-telegram"></i></a>
+                <a target="_blank" href="https://instagram.com/cnsair" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a target="_blank" href="https://twitter.com/cnsair" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a target="_blank" href="https://facebook.com/samson.chisom/" class="facebook"><i class="bi bi-facebook"></i></a> 
+                <a target="_blank" href="https://www.github.com/cnsair" class="github"><i class="bi bi-github"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/samson-chisom/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                <a target="_blank" href="https://www.reddit.com/user/cnsair" class="reddit"><i class="bi bi-reddit"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-4 d-flex align-items-stretch">
+            <div class="info-box">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Me</h3>
+              <p><a href="mailto:{{ $summary->email }}">{{ $summary->email }}</a></p>
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-4 d-flex align-items-stretch">
+            <div class="info-box">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Me</h3>
+
+              @php
+                $phone = $summary->phone;
+                $exp_phone = explode("|", "$phone" );
+              @endphp
+
+              @foreach ( $exp_phone as $phone )
+                <p><a href="tel:{{ $phone }}">{{ $phone }}</a></p>
+              @endforeach
+
+            </div>
+          </div>
+
         </div>
 
-        <div class="col-md-6 mt-4 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-envelope"></i>
-            <h3>Email Me</h3>
-            <p><a href="mailto:labibrahman555@gmail.com">labibrahman555@gmail.com</a></p>
-          </div>
-        </div>
-        <div class="col-md-6 mt-4 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-phone-call"></i>
-            <h3>Call Me</h3>
-            <p><a href="tel:+8801962181171">+880 1962181171 </a></p>
-          </div>
-        </div>
-      </div>
-    </div>
+      @empty
+          <p>Nothing. Please check back</p>
+      @endforelse
+
+    </div><!-- container -->
+
+
     <div class="text-center">
-      <a href="https://drive.google.com/u/0/uc?id=11rzmDDInNMuigNeZfShgqN2Xk905zMS5&amp;export=download" <button
-        type="button">Hire Me!</button>
+      <a href="{{ route('hire') }}"> 
+        <button type="button">Hire or reach out to me!</button>
       </a>
     </div>
+
+
   </section><!-- End Contact Section -->
 
 
 
 
 
-  <!-- ======= Services Section ======= -->
-  <section id="more" class="services">
-    <div class="container">
 
-      <div class="section-title">
-        <h2>More</h2>
-        <p>More Of Me</p>
+  <footer>
+      <div class="credits">
+        <p>&copy; 2024. Developed by <a href="#">Yours Truly (Me).</a> UI by the amazing  <a href="#">Mahmudur Rahman Labib</a></p>
       </div>
-
-      <div class="row">
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bi-journal-richtext"></i></div>
-            <h4><a href="#">Blog</a></h4>
-            <p>Read My Blog, Know More About My Research &amp; Developments!</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bi-camera"></i></div>
-            <h4><a href="#">Photography</a></h4>
-            <p>To Say Something About Photography, I Do It Out Of Sheer Passion, Not Profession!</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bi-youtube"></i></div>
-            <h4><a href="#">YouTube</a></h4>
-            <p>Take A Glance At My YouTube Channel, Maybe You Will Find A Video To Watch!</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bi-telegram"></i></div>
-            <h4><a href="#">Telegam</a></h4>
-            <p>Join My Telegram Channel To Get Regular Updates!</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bi-lightbulb"></i></div>
-            <h4><a href="#">Ideas</a></h4>
-            <p>Share Your Thoughts, Let's Do Some Brainstorming Together!</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-terminal"></i></div>
-            <h4><a href="#">Coding</a></h4>
-            <p>From Digital Security To Digital Pranks,I Will Be There For You!</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section><!-- End Services Section -->
-
-
-
-
-
-
-
-
-
-    <footer>
-        <div class="credits">
-        <p>Developed by yours truly (MOI)</p>
-        <p>UI by the amazing Mahmudur Rahman Labib</p>
-
-        </div>
-    </footer>
+  </footer>
 
 
 

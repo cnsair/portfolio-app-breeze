@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ExperienceRequest extends FormRequest
+class PortfolioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,11 @@ class ExperienceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'role' => 'required|max:50',
-            'date' => 'required|max:20',
-            'location' => 'required|max:200',
-            'activity' => 'required|max:1000'
+            'name' => 'required|max:50',
+            'project' => 'required|max:10',
+            'web_address' => 'max:40',
+            'description' => 'max:200',
+            'file' => 'required|mimes:jpg,jpeg,png,pdf|max:4048'
         ];
     }
 }

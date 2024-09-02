@@ -59,7 +59,7 @@
                             <div class="flex items-center gap-4">
                                 <x-primary-button>{{ __('Create Summary') }}</x-primary-button>
 
-                                @if (session('status') === 'summary-updated')
+                                @if (session('status') === 'summary-added')
                                     <p
                                         x-data="{ show: true }"
                                         x-show="show"

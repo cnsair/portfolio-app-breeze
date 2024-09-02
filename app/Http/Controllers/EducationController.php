@@ -17,18 +17,6 @@ class EducationController extends Controller
     public function index()
     {     
         // $course = $request->input('course');
-
-        // $education = Education::when(
-        //     $course,
-        //     fn($query, $course) => $query->course($course)
-        // );
-        // return view('uploads.show', ['education' => $education]);
-        
-        // return view('uploads.show', [
-        //     'education' => Education::all()]
-        // );
-
-        // $education = DB::table('education')->select('status','date','course', 'activity')->get();
     }
 
     /**
@@ -36,7 +24,7 @@ class EducationController extends Controller
      */
     public function create()
     {
-        return view('uploads.education');
+        //return view('uploads.education');
     }
 
     /**
@@ -56,7 +44,7 @@ class EducationController extends Controller
 
         //return redirect()->back()->with('success', 'Comment stored successfully!');
         // return redirect()->route('books.show', $book);
-        return Redirect::route('education.store')->with('status', 'education-updated');
+        return Redirect::route('education.store')->with('status', 'education-added');
         
     }
 
@@ -71,16 +59,29 @@ class EducationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EducationRequest $request, $education): RedirectResponse
     {
-        //
+        $request->user()->fill($request->validated());
+
+        $education = Education::find($education);
+        $education->status = $request->input('status');
+        $education->date = $request->input('date');
+        $education->course = $request->input('course');
+        $education->school = $request->input('school');
+        $education->activity = $request->input('activity');
+        $education->update();
+
+        return Redirect::route('show')->with('status', 'education-updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($education): RedirectResponse
     {
-        //
+        $education = Education::find($education);
+        $education->delete();
+
+        return Redirect::route('show')->with('status', 'education-deleted');
     }
 }

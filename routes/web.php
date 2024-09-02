@@ -2,34 +2,41 @@
 
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
+// use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\SummaryController;
 use App\Models\Education;
 //use Illuminate\Http\Request;
+use App\Models\Experience;
+use App\Models\Portfolio;
+use App\Models\Resume;
 use App\Models\Summary;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 
 
+//===================================================================
+//                            CUSTOM ROUTES
+//=================================================================
 
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// })->name('homepage');
+
+// Route::get('/', [
+//     HomeController::class, 'showInHome'
+// ])->name('homepage');
 
 
 
-//==========================================
-//  CUSTOM ROUTES
-//==========================================
-
-
-Route::get('/', function () {
-    return view('home');
-})->name('homepage');
-
+//=======================================
+//Show in Dashboard Route
+//=======================================
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -37,9 +44,8 @@ Route::get('/dashboard', function () {
 
 
 
-
 //=======================================
-//Show Routes
+//Show in Dashboard Route
 //=======================================
 Route::get('/uploads/show', [
     ShowController::class, 'showInDashboard'
@@ -51,60 +57,103 @@ Route::get('/uploads/show', [
 //Summary Routes
 //=======================================
 
+
+//delete
+Route::delete('/uploads/resume/{resume}', [
+    ResumeController::class, 'destroy'
+])->name('resume.destroy');
+//Create page
 Route::get('/uploads/summary', function (Summary $summary) {
     return view('uploads.summary', [
         'summaries' => $summary ]);
 })->middleware(['auth', 'verified'])->name('summary');
 
-// Route::get("/uploads/summary", function () {
-//     return "It came here";
-// })->name("summary.store");
-
+//Store
 Route::post('/uploads/summary', [
         SummaryController::class, 'store'
     ])->name('summaries.store');
 
-Route::put('/uploads/edit-summary', [
-        SummaryController::class, 'update'
-    ])->name('summaries.update');
+//Edit page
+Route::get('/uploads/edit-summary/{summary}', function (Summary $summary) {
+    return view('uploads.edit-summary', [
+        'summaries' => $summary ]);
+})->middleware(['auth', 'verified'])->name('summary.edit');
 
-//Route to Delete an item form the database
-// Route::delete('/tasks/{task}', function (Task $task) {
+//Update
+Route::patch('/uploads/edit-summary/{summary}', [
+    SummaryController::class, 'update'
+])->name('summary.update');
 
-//     $task->delete();
-//     return redirect()->route('tasks.index')
-//     ->with('success','task successfully deleted');
+//delete
+Route::delete('/uploads/show/{summary}', [
+    SummaryController::class, 'destroy'
+])->name('summary.destroy');
 
-// })->name('tasks.destroy');
+
 
 //=======================================
 //Education Routes
 //=======================================
 
+//Create page
 Route::get('/uploads/education', function (Education $education) {
     return view('uploads.education', [
         'educations' => $education ]);
 })->middleware(['auth', 'verified'])->name('education');
 
-//Route::resource('education', EducationController::class);
-    //->only(['index', 'store']);
-
+//Store
 Route::post('/uploads/education', [
         EducationController::class, 'store'
     ])->name('education.store');
+
+//Edit page
+Route::get('/uploads/edit-education/{education}', function (Education $education) {
+    return view('uploads.edit-education', [
+        'education' => $education ]);
+})->middleware(['auth', 'verified'])->name('education.edit');
+
+//Update
+Route::patch('/uploads/edit-education/{education}', [
+    EducationController::class, 'update'
+])->name('education.update');
+
+//delete
+Route::delete('/uploads/show{education}', [
+    EducationController::class, 'destroy'
+])->name('education.destroy');
+
+
 
 
 //=======================================
 //Experience Routes
 //=======================================
+
+//Create Page
 Route::get('/uploads/experience', function () {
     return view('uploads.experience');
 })->middleware(['auth', 'verified'])->name('experience');
 
-
+//Store
 Route::post('/uploads/experience', [
     ExperienceController::class, 'store'
 ])->name('experiences.store');
+
+//Edit page
+Route::get('/uploads/edit-experience/{experience}', function (Experience $experience) {
+    return view('uploads.edit-experience', [
+        'experience' => $experience ]);
+})->middleware(['auth', 'verified'])->name('experience.edit');
+
+//Update
+Route::patch('/uploads/edit-experience/{experience}', [
+    ExperienceController::class, 'update'
+])->name('experience.update');
+
+//delete
+Route::delete('/uploads/show/{experience}', [
+    ExperienceController::class, 'destroy'
+])->name('experience.destroy');
 
 
 
@@ -115,11 +164,58 @@ Route::get('/uploads/portfolio', function () {
     return view('uploads.portfolio');
 })->middleware(['auth', 'verified'])->name('portfolio');
 
+//Store
+Route::post('/uploads/portfolio', [
+    PortfolioController::class, 'store'
+])->name('portfolio.store');
+
+//Edit page
+Route::get('/uploads/edit-portfolio/{portfolio}', function (Portfolio $portfolio) {
+    return view('uploads.edit-portfolio', [
+        'portfolio' => $portfolio ]);
+})->middleware(['auth', 'verified'])->name('portfolio.edit');
+
+//Update
+Route::patch('/uploads/edit-portfolio/{portfolio}', [
+    PortfolioController::class, 'update'
+])->name('portfolio.update');
+
+//delete
+Route::delete('/uploads/show/{portfolio}', [
+    PortfolioController::class, 'destroy'
+])->name('portfolio.destroy');
+
+
+
+
+//=======================================
+//Resume Routes
+//=======================================
+
+//Create page
+Route::get('/uploads/resume', function (Resume $resume) {
+    return view('uploads.resume', [
+        'resume' => $resume ]);
+})->middleware(['auth', 'verified'])->name('resume');
+
+//Store
+Route::post('/uploads/resume', [
+        ResumeController::class, 'store'
+    ])->name('resume.store');
+
+//=========================================
+//  CUSTOM ROUTES ENDS
+//=========================================
+
 
 
 //=========================================
-//  CUSTOM ROUTES
+//  PROFILE ROUTES
 //=========================================
+
+Route::get('hire', function () {
+    return view('auth.hire');
+})->middleware(['guest'])->name('hire');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

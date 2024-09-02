@@ -23,41 +23,42 @@
                             @csrf
                         </form>
 
-                        <form method="post" action="{{ route('summaries.edit') }}" class="mt-6 space-y-6">
+                        <form method="post" action="{{ route('summary.update', ['summary' => $summaries->id]) }}" class="mt-6 space-y-6">
                             @csrf
+                            @method('patch')
 
                             <div>
                                 <x-input-label for="myname" :value="__('My Name')" />
-                                <x-text-input id="myname" name="myname" type="text" class="mt-1 block w-full" required autocomplete="myname" />
+                                <x-text-input id="myname" name="myname" type="text" class="mt-1 block w-full" required autocomplete="myname" :value="old('myname', $summaries->myname)" />
                                 <x-input-error class="mt-2" :messages="$errors->get('myname')" />
                             </div>
 
                             <div>
                                 <x-input-label for="biography" :value="__('Biography')" />
-                                <textarea style="background-color: rgb(17 24 39); color: #ffffff;" id="biography" name="biography" type="text" class="mt-1 block w-full" required autofocus autocomplete="biography"></textarea>
+                                <textarea style="background-color: rgb(17 24 39); color: #ffffff;" id="biography" name="biography" type="text" class="mt-1 block w-full" required autofocus autocomplete="biography" :value="" >{{ $summaries->biography }}</textarea>
                                 <x-input-error class="mt-2" :messages="$errors->get('biography')" />
                             </div>
 
                             <div>
                                 <x-input-label for="address" :value="__('Address')" />
-                                <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" required autocomplete="address" />
+                                <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" required autocomplete="address" :value="old('address', $summaries->address)" />
                                 <x-input-error class="mt-2" :messages="$errors->get('address')" />
                             </div>
 
                             <div>
                                 <x-input-label for="phone" :value="__('Phone')" />
-                                <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" required autocomplete="phone" />
+                                <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" required autocomplete="phone" :value="old('phone', $summaries->phone)" />
                                 <x-input-error class="mt-2" :messages="$errors->get('phone')" />
                             </div>
 
                             <div>
                                 <x-input-label for="email" :value="__('Email')" />
-                                <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" required autocomplete="email" />
+                                <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" required autocomplete="email" :value="old('email', $summaries->email)" />
                                 <x-input-error class="mt-2" :messages="$errors->get('email')" />
                             </div>
 
                             <div class="flex items-center gap-4">
-                                <x-primary-button>{{ __('Create Summary') }}</x-primary-button>
+                                <x-primary-button>{{ __('Update Summary') }}</x-primary-button>
 
                                 @if (session('status') === 'summary-updated')
                                     <p
@@ -66,7 +67,7 @@
                                         x-transition
                                         x-init="setTimeout(() => show = false, 2000)"
                                         class="text-sm text-gray-600 dark:text-gray-400"
-                                    >{{ __('Summary Added.') }}</p>
+                                    >{{ __('Summary Updated.') }}</p>
                                 @endif
                             </div>
                         </form>

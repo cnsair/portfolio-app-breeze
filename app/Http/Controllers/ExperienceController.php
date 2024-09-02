@@ -15,9 +15,7 @@ class ExperienceController extends Controller
      */
     public function index()
     {
-        // return view('uploads.show', [
-        //     'experience' => Experience::all()]
-        // );
+        // 
     }
 
     /**
@@ -25,7 +23,7 @@ class ExperienceController extends Controller
      */
     public function create()
     {
-        return view('uploads.experience');
+        return view('experiences.create');
     }
 
     /**
@@ -42,7 +40,7 @@ class ExperienceController extends Controller
         $experiences->activity = $request->input('activity');
         $experiences->save();
 
-        return Redirect::route('experiences.store')->with('status', 'experience-updated');
+        return Redirect::route('experiences.store')->with('status', 'experience-added');
     }
 
     /**
@@ -64,16 +62,28 @@ class ExperienceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ExperienceRequest $request, $experience): RedirectResponse
     {
-        //
+        $request->user()->fill($request->validated());
+
+        $experience = Experience::find($experience);
+        $experience->role = $request->input('role');
+        $experience->date = $request->input('date');
+        $experience->location = $request->input('location');
+        $experience->activity = $request->input('activity');
+        $experience->update();
+
+        return Redirect::route('show')->with('status', 'experience-updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($experience): RedirectResponse
     {
-        //
+        $experience = Experience::find($experience);
+        $experience->delete();
+
+        return Redirect::route('show')->with('status', 'experience-deleted');
     }
 }

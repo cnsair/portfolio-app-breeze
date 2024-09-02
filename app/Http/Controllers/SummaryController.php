@@ -47,7 +47,7 @@ class SummaryController extends Controller
         $summaries->email = $request->input('email');
         $summaries->save();
 
-        return Redirect::route('summaries.store')->with('status', 'summary-updated');
+        return Redirect::route('summaries.store')->with('status', 'summary-added');
     }
 
     /**
@@ -61,24 +61,44 @@ class SummaryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request)
     {
-        //
+        // return view('uploads.edit-summary', [
+        //     'summaries' => $request,
+        // ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SummaryRequest $request, $summaries): RedirectResponse
     {
-        //
+        $request->user()->fill($request->validated());
+
+        //dd($request->input('myname'), $request->input('biography'));
+        //$request->update([
+            //$summaries = new Summary();
+            $summaries = Summary::find($summaries);
+            $summaries->myname = $request->input('myname');
+            $summaries->biography = $request->input('biography');
+            $summaries->address = $request->input('address');
+            $summaries->phone = $request->input('phone');
+            $summaries->email = $request->input('email');
+            $summaries->update();
+        //]);
+
+        return Redirect::route('show')->with('status', 'summary-updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($summaries): RedirectResponse
     {
-        //
+        $summaries = Summary::find($summaries);
+        //dd($summaries);
+        $summaries->delete();
+
+        return Redirect::route('show')->with('status', 'summary-deleted');
     }
 }

@@ -9,9 +9,22 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\HireController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
+
+    Route::get('/', [
+        HomeController::class, 'showInHome'
+    ])->name('homepage');
+
+    // Route::get('auth/hire', [HireController::class, 'create'])
+    //             ->name('hire');
+
+    Route::post('hire', [HireController::class, 'store'])
+                ->name('hire.store');
+
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
