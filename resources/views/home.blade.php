@@ -765,7 +765,7 @@
 
   <footer>
       <div class="credits">
-        <p>&copy; 2024. Developed by <a href="#">Yours Truly (Me).</a> UI by the amazing  <a href="#">Mahmudur Rahman Labib</a></p>
+        <p>&copy; 2024. Developed by <a href="#">Yours Truly (Me)</a> with Laravel. UI by the amazing  <a href="#">Mahmudur Rahman Labib</a></p>
       </div>
   </footer>
 
@@ -787,5 +787,4 @@
 
 </body>
 
-<!-- UI by Mahmudur Rahman Labib. Thank you Mahmudur for this awesome UI _Chisom-->
 </html>

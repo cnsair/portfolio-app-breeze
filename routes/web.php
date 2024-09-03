@@ -57,11 +57,6 @@ Route::get('/uploads/show', [
 //Summary Routes
 //=======================================
 
-
-//delete
-Route::delete('/uploads/resume/{resume}', [
-    ResumeController::class, 'destroy'
-])->name('resume.destroy');
 //Create page
 Route::get('/uploads/summary', function (Summary $summary) {
     return view('uploads.summary', [
@@ -164,27 +159,27 @@ Route::get('/uploads/portfolio', function () {
     return view('uploads.portfolio');
 })->middleware(['auth', 'verified'])->name('portfolio');
 
-//Store
-Route::post('/uploads/portfolio', [
-    PortfolioController::class, 'store'
-])->name('portfolio.store');
-
 //Edit page
 Route::get('/uploads/edit-portfolio/{portfolio}', function (Portfolio $portfolio) {
     return view('uploads.edit-portfolio', [
         'portfolio' => $portfolio ]);
 })->middleware(['auth', 'verified'])->name('portfolio.edit');
 
-//Update
-Route::patch('/uploads/edit-portfolio/{portfolio}', [
-    PortfolioController::class, 'update'
-])->name('portfolio.update');
+Route::controller(PortfolioController::class)->group(function () {
 
-//delete
-Route::delete('/uploads/show/{portfolio}', [
-    PortfolioController::class, 'destroy'
-])->name('portfolio.destroy');
+    //Store
+    Route::post('/uploads/portfolio', 'store')
+        ->name('portfolio.store');
 
+    //Update
+    Route::patch('/uploads/edit-portfolio/{portfolio}', 'update')
+        ->name('portfolio.update');
+
+    //delete
+    Route::delete('/uploads/show/{portfolio}', 'destroy')
+        ->name('portfolio.destroy');
+
+});
 
 
 
@@ -203,6 +198,11 @@ Route::post('/uploads/resume', [
         ResumeController::class, 'store'
     ])->name('resume.store');
 
+//delete
+Route::delete('/uploads/show/{resume}', [
+    ResumeController::class, 'destroy'
+])->name('resume.destroy');
+
 //=========================================
 //  CUSTOM ROUTES ENDS
 //=========================================
@@ -210,13 +210,18 @@ Route::post('/uploads/resume', [
 
 
 //=========================================
-//  PROFILE ROUTES
+//  HIRE ROUTES
 //=========================================
 
 Route::get('hire', function () {
     return view('auth.hire');
 })->middleware(['guest'])->name('hire');
 
+
+
+//=========================================
+//  PROFILE ROUTES
+//=========================================
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
