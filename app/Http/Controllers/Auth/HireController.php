@@ -6,8 +6,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
-use App\Http\Requests\HireRequest;
+// use Illuminate\View\View;
+// use App\Http\Requests\HireRequest;
 use App\Models\Hire;
 use Illuminate\Support\Facades\Redirect;
 
@@ -22,14 +22,6 @@ class HireController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    // public function create(): View
-    // {
-    //     return view('auth.hire');
-    // }
 
     /**
      * Store a newly created resource in storage.
@@ -73,19 +65,15 @@ class HireController extends Controller
         }
 
     }
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($hire): RedirectResponse
     {
-        //
+        $hire = Hire::find($hire);
+        $hire->delete();
+
+        return Redirect::route('dashboard')->with('status', 'hire-deleted');
     }
 }

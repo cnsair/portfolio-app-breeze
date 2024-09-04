@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\HireController;
+use App\Http\Controllers\Auth\TestimonyController;
+//use App\Http\Controllers\TestimonyController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +26,9 @@ Route::middleware('guest')->group(function () {
 
     Route::post('hire', [HireController::class, 'store'])
                 ->name('hire.store');
+
+    Route::post('testimony', [TestimonyController::class, 'store'])
+                ->name('testimony.store');
 
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');

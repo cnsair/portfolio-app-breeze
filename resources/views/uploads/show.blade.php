@@ -357,7 +357,7 @@
                                             <img class="pic" src="{{ $file_url }}" alt="{{ $portfolio->name }}" />
                                         @endif
                                             <!-- Storage::disk('public')->url(session('$portfolio->file')) -->
-                                    </li>  
+                                    </li>
                             
                                     <div style="margin-top: 1%">
                                         <div class="oneline">

@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\HireController;
+use App\Http\Controllers\Auth\TestimonyController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 // use App\Http\Controllers\HomeController;
+use App\Http\Controllers\landingpageController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResumeController;
@@ -14,6 +17,7 @@ use App\Models\Experience;
 use App\Models\Portfolio;
 use App\Models\Resume;
 use App\Models\Summary;
+use App\Models\Testimony;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
@@ -38,9 +42,14 @@ use Illuminate\Support\Facades\Route;
 //Show in Dashboard Route
 //=======================================
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/dashboard', [
+    LandingpageController::class, 'showInLandingpage'
+])->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
@@ -155,6 +164,8 @@ Route::delete('/uploads/show/{experience}', [
 //=======================================
 //Portfolio Routes
 //=======================================
+
+// Store page
 Route::get('/uploads/portfolio', function () {
     return view('uploads.portfolio');
 })->middleware(['auth', 'verified'])->name('portfolio');
@@ -167,7 +178,7 @@ Route::get('/uploads/edit-portfolio/{portfolio}', function (Portfolio $portfolio
 
 Route::controller(PortfolioController::class)->group(function () {
 
-    //Store
+    //Stores value
     Route::post('/uploads/portfolio', 'store')
         ->name('portfolio.store');
 
@@ -213,10 +224,40 @@ Route::delete('/uploads/show/{resume}', [
 //  HIRE ROUTES
 //=========================================
 
+//create Hire form
 Route::get('hire', function () {
     return view('auth.hire');
 })->middleware(['guest'])->name('hire');
 
+//delete
+Route::delete('/dashboard/{hire}', [
+    HireController::class, 'destroy'
+])->name('hire.destroy');
+
+
+
+//=========================================
+//  TESTIMONY ROUTES
+//=========================================
+
+//create Testimony form
+Route::get('testimony', function () {
+    return view('auth.testimony');
+})->middleware(['guest'])->name('testimony');
+
+//delete
+Route::delete('/dashboard{testimony}', [
+    TestimonyController::class, 'destroy'
+])->name('testimony.destroy');
+
+
+//Route to toggle betweeen Completed Task and Uncompleted Task
+Route::put('/dashboard/{testimony}/toggle-approved', function (Testimony $testimony){
+
+    $testimony->toggleApproved();
+    return redirect()->back()->with('success','done');
+    
+})->name('testimony.approved');
 
 
 //=========================================

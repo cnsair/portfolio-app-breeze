@@ -631,31 +631,25 @@
       <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
         <div class="swiper-wrapper">
 
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Samson is very reliable. he knows his onions. I have worked with him at SmartTuls Ltd where he worked as a junior web developer and gradually worked his way to a lead developer in 2 years. He helped developed the main company's application which is a schoola management system.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-              <h3>Joshua Sy-Apoe</h3>
-              <h4>CEO &amp; Founder (SmartTuls)</h4>
-            </div>
-          </div><!-- End testimonial item -->
+          @forelse ($testimony_section as $testimony)
+        
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  {{ $testimony->message }}
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                <h3>{{ $testimony->name }}</h3>
+                <h4> {{ $testimony->comp_position }} </h4>
+              </div>
+            </div><!-- End testimonial item -->
 
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                He is intelligent, smart and articulate; he is hardworking too. He has shown beyond reasonable doubt that he can solve complex problems with little or no supervision. He worked with me in 2018 for 2years as an IT Support Intern and has since been our close call engineer whenever the need arises. 
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-              <h3>Mobolaji D. Soremekun</h3>
-              <h4>Managing Director (Cathwith Beejay Solutions)</h4>
-            </div>
-          </div><!-- End testimonial item -->
+          
+          @empty
+            <p>Nothing. Please check back</p>
+          @endforelse
 
         </div>
         <div class="swiper-pagination"></div>
@@ -666,11 +660,12 @@
     </div><!-- End Testimonials  -->
 
 
-
-
-
-
+    <div class="text-center">
+      <a href="{{ route('testimony') }}"> 
+        <button type="button">Give a testimony!</button>
+      </a>
     </div>
+
   </section><!-- End Portfolio Section -->
 
 

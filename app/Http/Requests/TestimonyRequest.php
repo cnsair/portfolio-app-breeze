@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HireRequest extends FormRequest
+class TestimonyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,6 +23,7 @@ class HireRequest extends FormRequest
     {
         return [
             'name' => 'required|max:50|min:5',
+            'comp_position' => 'required|max:100|min:5',
             'email' => 'max:50|min:5',
             'message' => 'required|max:500|min:5'
         ];
