@@ -12,11 +12,16 @@
     .active{
         color: #8af742 !important;
     }
+    .box {
+        /* inline-size: 150px; */
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
 
 </style>
 
-<x-slot name="header">
-    <div class="display: inline-flex">
+<x-slot name="header" class="inline-flex flex-auto sm:flex sm:items-center sm:ms-6 box">
+    <div>
 
         <a class="{{ $active === route('summary') ? 'active' : "" }}
             font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight pass" 

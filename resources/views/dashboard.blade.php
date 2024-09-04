@@ -41,60 +41,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <!-- p-6 sm:p-8 -->
-                <div class="oneline padn text-gray-900 dark:text-gray-100">
-                    <div class="max-w-xl f-color">
-                        <ul> <h2>Hire & Feedbacks</h2>
-                            @forelse ($hire_section as $hire)
-                                <div style="padding: 2%">
-                                    <li>
-                                        <b class="f-color">Name:</b>
-                                        <h3>{{ $hire->name }}</h3>
-                                    </li>
-                                    <li>
-                                        <b class="f-color">Email:</b>
-                                        <h3>{{ $hire->email ?? "Email not included" }}</h3>
-                                    </li>
-                                    <li>
-                                        <b class="f-color">Message:</b>
-                                        <h3>{{ $hire->message }}</h3>
-                                    </li>
-                            
-                                    <div style="margin-top: 1%">
-    
-                                        <div class="oneline">
-                                            <form action="{{ route('hire.destroy', ['hire' => $hire->id]) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-
-                                                <x-danger-button onclick="return confirm('Are you sure you want to delete this record?');" class="ms-3">
-                                                    {{ __('Delete') }}
-                                                </x-danger-button>
-
-                                                @if (session('status') === 'hire-deleted')
-                                                    <p
-                                                        x-data="{ show: true }"
-                                                        x-show="show"
-                                                        x-transition
-                                                        x-init="setTimeout(() => show = false, 2000)"
-                                                        class="text-sm text-gray-600 dark:text-gray-400"
-                                                    >{{ __('Hire Deleted.') }}</p>
-                                                @endif
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            @empty
-                                <p>Nothing to display</p>
-                            @endforelse
-                        </ul>
-                    </div>
-                </div><!-- Oneline padn -->
                       
-
-
                 <div class="oneline padn text-gray-900 dark:text-gray-100">
                     <div class="max-w-xl f-color">
-                        <ul> <h2>Testimony</h2>
+                        <ul> <h2>Testimonies</h2>
                             @forelse ($testimony_section as $testimony)
                                 <div style="padding: 2%">
                                     <li>
@@ -155,6 +105,57 @@
                                                         x-init="setTimeout(() => show = false, 2000)"
                                                         class="text-sm text-gray-600 dark:text-gray-400"
                                                     >{{ __('Testimony Deleted.') }}</p>
+                                                @endif
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+                                <p>Nothing to display</p>
+                            @endforelse
+                        </ul>
+                    </div>
+                </div><!-- Oneline padn -->
+
+
+
+                <div class="oneline padn text-gray-900 dark:text-gray-100">
+                    <div class="max-w-xl f-color">
+                        <ul> <h2>Hire & Feedbacks</h2>
+                            @forelse ($hire_section as $hire)
+                                <div style="padding: 2%">
+                                    <li>
+                                        <b class="f-color">Name:</b>
+                                        <h3>{{ $hire->name }}</h3>
+                                    </li>
+                                    <li>
+                                        <b class="f-color">Email:</b>
+                                        <h3>{{ $hire->email ?? "Email not included" }}</h3>
+                                    </li>
+                                    <li>
+                                        <b class="f-color">Message:</b>
+                                        <h3>{{ $hire->message }}</h3>
+                                    </li>
+                            
+                                    <div style="margin-top: 1%">
+    
+                                        <div class="oneline">
+                                            <form action="{{ route('hire.destroy', ['hire' => $hire->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <x-danger-button onclick="return confirm('Are you sure you want to delete this record?');" class="ms-3">
+                                                    {{ __('Delete') }}
+                                                </x-danger-button>
+
+                                                @if (session('status') === 'hire-deleted')
+                                                    <p
+                                                        x-data="{ show: true }"
+                                                        x-show="show"
+                                                        x-transition
+                                                        x-init="setTimeout(() => show = false, 2000)"
+                                                        class="text-sm text-gray-600 dark:text-gray-400"
+                                                    >{{ __('Hire Deleted.') }}</p>
                                                 @endif
                                             </form>
                                         </div>

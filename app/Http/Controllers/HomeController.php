@@ -15,12 +15,11 @@ class HomeController extends Controller
     //Controller that renders posted items
     public function showInHome(){
         
-        $summary_section = Summary::all();
-        $education_section = Education::all();
-        $experience_section = Experience::all();
-        $portfolio_section = Portfolio::all();
-        $resume_section = Resume::all();
-        // $testimony_section = Testimony::all()->where('approved', 1);
+        $summary_section = Summary::query()->orderBy('id', 'asc')->limit(1)->get();
+        $education_section = Education::query()->orderBy('id', 'desc')->get();
+        $experience_section = Experience::query()->orderBy('id', 'desc')->get();
+        $portfolio_section = Portfolio::query()->orderBy('id', 'desc')->get();
+        $resume_section = Resume::query()->orderBy('id', 'desc')->get();
         $testimony_section = Testimony::where('approved', true)->get();
 
         return view('home')

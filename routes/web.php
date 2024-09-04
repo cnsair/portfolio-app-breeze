@@ -26,26 +26,9 @@ use Illuminate\Support\Facades\Route;
 //===================================================================
 //                            CUSTOM ROUTES
 //=================================================================
-
-
-// Route::get('/', function () {
-//     return view('home');
-// })->name('homepage');
-
-// Route::get('/', [
-//     HomeController::class, 'showInHome'
-// ])->name('homepage');
-
-
-
 //=======================================
 //Show in Dashboard Route
 //=======================================
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 
 Route::get('/dashboard', [
     LandingpageController::class, 'showInLandingpage'

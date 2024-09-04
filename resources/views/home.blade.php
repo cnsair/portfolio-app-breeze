@@ -617,9 +617,6 @@
 
   <!-- ======= Resume Section ======= -->
   <section id="testimonial" class="resume">
-    <div class="container"></div>
-
-
 
     <!-- ======= Testimonials ======= -->
     <div class="testimonials container">

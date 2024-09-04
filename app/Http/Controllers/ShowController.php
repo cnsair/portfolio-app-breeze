@@ -14,11 +14,11 @@ class ShowController extends Controller
     //Controller that renders posted items
     public function showInDashboard(){
         
-        $summary_section = Summary::all();
-        $education_section = Education::all();
-        $experience_section = Experience::all();
-        $portfolio_section = Portfolio::all();
-        $resume_section = Resume::all();
+        $summary_section = Summary::query()->orderBy('id', 'asc')->get();
+        $education_section = Education::query()->orderBy('id', 'desc')->get();
+        $experience_section = Experience::query()->orderBy('id', 'desc')->get();
+        $portfolio_section = Portfolio::query()->orderBy('id', 'desc')->get();
+        $resume_section = Resume::query()->orderBy('id', 'desc')->get();
 
         return view('uploads.show')
             ->with('summary_section', $summary_section)
