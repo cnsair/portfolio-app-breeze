@@ -201,14 +201,9 @@ Route::delete('/uploads/show/{resume}', [
 //=========================================
 
 //create Hire form
-Route::get('hire', [
-    HireController::class, 'create'
-])->middleware(['guest'])->name('hire');
-
-//create Hire form
-Route::get('hire', [
-    HireController::class, 'store'
-])->middleware(['guest'])->name('hire.store');
+Route::get('hire', function () {
+    return view('auth.hire');
+})->middleware(['guest'])->name('hire');
 
 //delete
 Route::delete('/dashboard/{hire}', [
@@ -222,14 +217,9 @@ Route::delete('/dashboard/{hire}', [
 //=========================================
 
 //create Testimony form
-Route::get('testimony', [
-    TestimonyController::class, 'create'
-])->middleware(['guest'])->name('testimony');
-
-//create Hire form
-Route::get('hire', [
-    TestimonyController::class, 'store'
-])->middleware(['guest'])->name('testimony.store');
+Route::get('testimony', function () {
+    return view('auth.testimony');
+})->middleware(['guest'])->name('testimony');
 
 //delete
 Route::delete('/dashboard{testimony}', [
@@ -237,7 +227,7 @@ Route::delete('/dashboard{testimony}', [
 ])->name('testimony.destroy');
 
 
-//Route to toggle betweeen Approved Testimony and Unapproved Testimony
+//Route to toggle betweeen Completed Task and Uncompleted Task
 Route::put('/dashboard/{testimony}/toggle-approved', function (Testimony $testimony){
 
     $testimony->toggleApproved();

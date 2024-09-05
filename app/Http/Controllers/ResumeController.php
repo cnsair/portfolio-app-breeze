@@ -41,7 +41,7 @@ class ResumeController extends Controller
             return Redirect::route('resume')->with('status', 'resume-denied');
         }
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -53,3 +53,55 @@ class ResumeController extends Controller
         return Redirect::route('show')->with('status', 'resume-deleted');
     }
 }
+
+
+
+
+//=========================================
+//  HIRE ROUTES
+//=========================================
+
+// //create Hire form
+// Route::get('hire', [
+//     HireController::class, 'create'
+// ])->middleware(['guest'])->name('hire');
+
+// //create Hire form
+// Route::get('hire', [
+//     HireController::class, 'store'
+// ])->middleware(['guest'])->name('hire.store');
+
+// //delete
+// Route::delete('/dashboard/{hire}', [
+//     HireController::class, 'destroy'
+// ])->name('hire.destroy');
+
+
+
+// //=========================================
+// //  TESTIMONY ROUTES
+// //=========================================
+
+// //create Testimony form
+// Route::get('testimony', [
+//     TestimonyController::class, 'create'
+// ])->middleware(['guest'])->name('testimony');
+
+// //create Hire form
+// Route::get('hire', [
+//     TestimonyController::class, 'store'
+// ])->middleware(['guest'])->name('testimony.store');
+
+// //delete
+// Route::delete('/dashboard{testimony}', [
+//     TestimonyController::class, 'destroy'
+// ])->name('testimony.destroy');
+
+
+// //Route to toggle betweeen Approved Testimony and Unapproved Testimony
+// Route::put('/dashboard/{testimony}/toggle-approved', function (Testimony $testimony){
+
+//     $testimony->toggleApproved();
+//     return redirect()->back()->with('success','done');
+    
+// })->name('testimony.approved');
