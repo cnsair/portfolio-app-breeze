@@ -12,19 +12,11 @@ use Illuminate\Support\Facades\Redirect;
 class EducationController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {     
-        // $course = $request->input('course');
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //return view('uploads.education');
+        return view('uploads.education');
     }
 
     /**
@@ -51,9 +43,11 @@ class EducationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Education $education)
     {
-        //
+        return view('uploads.edit-education', [
+            'education' => $education 
+        ]);
     }
 
     /**

@@ -11,20 +11,6 @@ use Illuminate\Support\Facades\Redirect;
 class SummaryController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        // return view('uploads.show', [
-        //     'summaries' => Summary::all()]
-        // );
-
-        // dd($summaries);
-        //$summaries = Summary::all();
-        // return view('uploads.show', ['summary' => $summaries]);
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -51,21 +37,13 @@ class SummaryController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request)
+    public function edit(Summary $summary)
     {
-        // return view('uploads.edit-summary', [
-        //     'summaries' => $request,
-        // ]);
+        return view('uploads.edit-summary', [
+            'summaries' => $summary 
+        ]);
     }
 
     /**

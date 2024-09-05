@@ -21,14 +21,11 @@ Route::middleware('guest')->group(function () {
         HomeController::class, 'showInHome'
     ])->name('homepage');
 
-    // Route::get('auth/hire', [HireController::class, 'create'])
-    //             ->name('hire');
+    // Route::post('hire', [HireController::class, 'store'])
+    //             ->name('hire.store');
 
-    Route::post('hire', [HireController::class, 'store'])
-                ->name('hire.store');
-
-    Route::post('testimony', [TestimonyController::class, 'store'])
-                ->name('testimony.store');
+    // Route::post('testimony', [TestimonyController::class, 'store'])
+    //             ->name('testimony.store');
 
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');

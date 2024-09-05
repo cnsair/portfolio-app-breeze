@@ -37,7 +37,7 @@ Route::get('/dashboard', [
 
 
 //=======================================
-//Show in Dashboard Route
+//Show in Show Route
 //=======================================
 Route::get('/uploads/show', [
     ShowController::class, 'showInDashboard'
@@ -50,21 +50,19 @@ Route::get('/uploads/show', [
 //=======================================
 
 //Create page
-Route::get('/uploads/summary', function (Summary $summary) {
-    return view('uploads.summary', [
-        'summaries' => $summary ]);
-})->middleware(['auth', 'verified'])->name('summary');
+Route::get('/uploads/summary', [
+    SummaryController::class, 'create'
+])->middleware(['auth', 'verified'])->name('summary');
 
 //Store
 Route::post('/uploads/summary', [
-        SummaryController::class, 'store'
-    ])->name('summaries.store');
+    SummaryController::class, 'store'
+])->name('summaries.store');
 
 //Edit page
-Route::get('/uploads/edit-summary/{summary}', function (Summary $summary) {
-    return view('uploads.edit-summary', [
-        'summaries' => $summary ]);
-})->middleware(['auth', 'verified'])->name('summary.edit');
+Route::get('/uploads/edit-summary/{summary}', [
+    SummaryController::class, 'edit'
+])->middleware(['auth', 'verified'])->name('summary.edit');
 
 //Update
 Route::patch('/uploads/edit-summary/{summary}', [
@@ -83,21 +81,19 @@ Route::delete('/uploads/show/{summary}', [
 //=======================================
 
 //Create page
-Route::get('/uploads/education', function (Education $education) {
-    return view('uploads.education', [
-        'educations' => $education ]);
-})->middleware(['auth', 'verified'])->name('education');
+Route::get('/uploads/education', [
+    EducationController::class, 'create'
+])->name('education');
 
 //Store
 Route::post('/uploads/education', [
-        EducationController::class, 'store'
-    ])->name('education.store');
+    EducationController::class, 'store'
+])->name('education.store');
 
 //Edit page
-Route::get('/uploads/edit-education/{education}', function (Education $education) {
-    return view('uploads.edit-education', [
-        'education' => $education ]);
-})->middleware(['auth', 'verified'])->name('education.edit');
+Route::get('/uploads/edit-education/{education}', [
+    EducationController::class, 'edit'
+])->name('education.edit');
 
 //Update
 Route::patch('/uploads/edit-education/{education}', [
@@ -117,9 +113,9 @@ Route::delete('/uploads/show{education}', [
 //=======================================
 
 //Create Page
-Route::get('/uploads/experience', function () {
-    return view('uploads.experience');
-})->middleware(['auth', 'verified'])->name('experience');
+Route::get('/uploads/experience', [
+    ExperienceController::class, 'create'
+])->name('experience');
 
 //Store
 Route::post('/uploads/experience', [
@@ -127,10 +123,9 @@ Route::post('/uploads/experience', [
 ])->name('experiences.store');
 
 //Edit page
-Route::get('/uploads/edit-experience/{experience}', function (Experience $experience) {
-    return view('uploads.edit-experience', [
-        'experience' => $experience ]);
-})->middleware(['auth', 'verified'])->name('experience.edit');
+Route::get('/uploads/edit-experience/{experience}', [
+    ExperienceController::class, 'edit'
+])->name('experience.edit');
 
 //Update
 Route::patch('/uploads/edit-experience/{experience}', [
@@ -148,22 +143,21 @@ Route::delete('/uploads/show/{experience}', [
 //Portfolio Routes
 //=======================================
 
-// Store page
-Route::get('/uploads/portfolio', function () {
-    return view('uploads.portfolio');
-})->middleware(['auth', 'verified'])->name('portfolio');
 
-//Edit page
-Route::get('/uploads/edit-portfolio/{portfolio}', function (Portfolio $portfolio) {
-    return view('uploads.edit-portfolio', [
-        'portfolio' => $portfolio ]);
-})->middleware(['auth', 'verified'])->name('portfolio.edit');
 
 Route::controller(PortfolioController::class)->group(function () {
+
+    // create page
+    Route::get('/uploads/portfolio', 'create')
+        ->name('portfolio');
 
     //Stores value
     Route::post('/uploads/portfolio', 'store')
         ->name('portfolio.store');
+
+    //Edit page
+    Route::get('/uploads/edit-portfolio/{portfolio}', 'edit')
+        ->name('portfolio.edit');
 
     //Update
     Route::patch('/uploads/edit-portfolio/{portfolio}', 'update')
@@ -182,15 +176,14 @@ Route::controller(PortfolioController::class)->group(function () {
 //=======================================
 
 //Create page
-Route::get('/uploads/resume', function (Resume $resume) {
-    return view('uploads.resume', [
-        'resume' => $resume ]);
-})->middleware(['auth', 'verified'])->name('resume');
+Route::get('/uploads/resume', [
+    ResumeController::class, 'create'
+])->name('resume');
 
 //Store
 Route::post('/uploads/resume', [
-        ResumeController::class, 'store'
-    ])->name('resume.store');
+    ResumeController::class, 'store'
+])->name('resume.store');
 
 //delete
 Route::delete('/uploads/show/{resume}', [
@@ -208,9 +201,14 @@ Route::delete('/uploads/show/{resume}', [
 //=========================================
 
 //create Hire form
-Route::get('hire', function () {
-    return view('auth.hire');
-})->middleware(['guest'])->name('hire');
+Route::get('hire', [
+    HireController::class, 'create'
+])->middleware(['guest'])->name('hire');
+
+//create Hire form
+Route::get('hire', [
+    HireController::class, 'store'
+])->middleware(['guest'])->name('hire.store');
 
 //delete
 Route::delete('/dashboard/{hire}', [
@@ -224,9 +222,14 @@ Route::delete('/dashboard/{hire}', [
 //=========================================
 
 //create Testimony form
-Route::get('testimony', function () {
-    return view('auth.testimony');
-})->middleware(['guest'])->name('testimony');
+Route::get('testimony', [
+    TestimonyController::class, 'create'
+])->middleware(['guest'])->name('testimony');
+
+//create Hire form
+Route::get('hire', [
+    TestimonyController::class, 'store'
+])->middleware(['guest'])->name('testimony.store');
 
 //delete
 Route::delete('/dashboard{testimony}', [
@@ -234,7 +237,7 @@ Route::delete('/dashboard{testimony}', [
 ])->name('testimony.destroy');
 
 
-//Route to toggle betweeen Completed Task and Uncompleted Task
+//Route to toggle betweeen Approved Testimony and Unapproved Testimony
 Route::put('/dashboard/{testimony}/toggle-approved', function (Testimony $testimony){
 
     $testimony->toggleApproved();

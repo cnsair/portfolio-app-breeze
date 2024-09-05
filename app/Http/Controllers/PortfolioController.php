@@ -10,20 +10,13 @@ use Illuminate\Support\Facades\Redirect;
 
 class PortfolioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('uploads.portfolio');
     }
 
     /**
@@ -54,19 +47,12 @@ class PortfolioController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Portfolio $portfolio)
     {
-        //
+        return view('uploads.edit-portfolio', [
+            'portfolio' => $portfolio ]);
     }
 
     /**
@@ -84,7 +70,11 @@ class PortfolioController extends Controller
             $portfolio->project = $request->input('project');
             $portfolio->web_address = $request->input('web_address');
             $portfolio->description = $request->input('description');
-            $portfolio->file = $request->file('file')->store('uploads', 'public');
+            
+            $selected_file = $request->file('file');
+            if ( !empty($selected_file) ) {
+                $portfolio->file = $request->file('file')->store('uploads', 'public');
+            }
 
             $portfolio->update();
 

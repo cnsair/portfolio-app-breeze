@@ -57,7 +57,7 @@
 
                             <div>
                                 <x-input-label for="file" :value="__('File')" />
-                                <x-text-input id="file" name="file" type="file" class="mt-1 block w-full" required autocomplete="file" />
+                                <x-text-input id="file" name="file" type="file" class="mt-1 block w-full" autocomplete="file" />
                                 <!-- <x-text-input name="file_holder" type="hidden" class="mt-1 block w-full" autocomplete="file" :value="old('status', $portfolio->file)" /> -->
                                 <x-input-error class="mt-2" :messages="$errors->get('file')" />
                             </div>

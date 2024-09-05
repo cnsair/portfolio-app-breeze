@@ -18,9 +18,9 @@ class HireController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function create()
     {
-        //
+        return view('auth.hire');
     }
 
     /**
@@ -52,7 +52,7 @@ class HireController extends Controller
 
         if ( $request == true) { 
 
-            $hire = Hire::create([
+            Hire::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'message' => $request->message,

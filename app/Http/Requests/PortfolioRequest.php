@@ -26,7 +26,7 @@ class PortfolioRequest extends FormRequest
             'project' => 'required|max:10',
             'web_address' => 'max:40',
             'description' => 'max:200',
-            'file' => 'required|mimes:jpg,jpeg,png,pdf|max:4048'
+            'file' => 'mimes:jpg,jpeg,png,pdf|max:4048'
         ];
     }
 }
