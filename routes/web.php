@@ -4,21 +4,13 @@ use App\Http\Controllers\Auth\HireController;
 use App\Http\Controllers\Auth\TestimonyController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
-// use App\Http\Controllers\HomeController;
 use App\Http\Controllers\landingpageController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\SummaryController;
-use App\Models\Education;
-//use Illuminate\Http\Request;
-use App\Models\Experience;
-use App\Models\Portfolio;
-use App\Models\Resume;
-use App\Models\Summary;
 use App\Models\Testimony;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 
