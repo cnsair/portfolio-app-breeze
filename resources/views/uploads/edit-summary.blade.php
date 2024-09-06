@@ -22,6 +22,27 @@
                         <form id="send-verification" method="post" action="{{ route('verification.send') }}">
                             @csrf
                         </form>
+    
+                        <div style="margin-top: 20px">
+                            <form action="{{ route('summary.destroy', ['summary' => $summaries->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+
+                                <x-danger-button onclick="return confirm('Are you sure you want to delete this record?');" class="ms-3">
+                                    {{ __('Delete') }}
+                                </x-danger-button>
+
+                                @if (session('status') === 'summary-deleted')
+                                    <p
+                                        x-data="{ show: true }"
+                                        x-show="show"
+                                        x-transition
+                                        x-init="setTimeout(() => show = false, 2000)"
+                                        class="text-sm text-gray-600 dark:text-gray-400"
+                                    >{{ __('Summary Deleted.') }}</p>
+                                @endif
+                            </form>
+                        </div>
 
                         <form method="post" action="{{ route('summary.update', ['summary' => $summaries->id]) }}" class="mt-6 space-y-6">
                             @csrf

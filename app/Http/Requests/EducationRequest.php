@@ -26,7 +26,7 @@ class EducationRequest extends FormRequest
             'date' => 'required|max:20',
             'course' => 'required|max:40',
             'school' => 'required|max:100',
-            'activity' => 'required|max:200'
+            'activity' => 'required|max:500'
         ];
     }
 }

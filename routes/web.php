@@ -4,7 +4,7 @@ use App\Http\Controllers\Auth\HireController;
 use App\Http\Controllers\Auth\TestimonyController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
-use App\Http\Controllers\landingpageController;
+use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResumeController;
@@ -62,7 +62,7 @@ Route::patch('/uploads/edit-summary/{summary}', [
 ])->name('summary.update');
 
 //delete
-Route::delete('/uploads/show/{summary}', [
+Route::delete('/uploads/edit-summary/{summary}', [
     SummaryController::class, 'destroy'
 ])->name('summary.destroy');
 
@@ -156,7 +156,7 @@ Route::controller(PortfolioController::class)->group(function () {
         ->name('portfolio.update');
 
     //delete
-    Route::delete('/uploads/show/{portfolio}', 'destroy')
+    Route::delete('/uploads/edit-portfolio/{portfolio}', 'destroy')
         ->name('portfolio.destroy');
 
 });

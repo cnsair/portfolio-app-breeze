@@ -88,27 +88,6 @@
                                         <div class="oneline">
                                             <a class="green" href="{{ route('summary.edit', ['summary' => $summary->id]) }}">Edit </a>
                                         </div>
-    
-                                        <div class="oneline">
-                                            <form action="{{ route('summary.destroy', ['summary' => $summary->id]) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-
-                                                <x-danger-button onclick="return confirm('Are you sure you want to delete this record?');" class="ms-3">
-                                                    {{ __('Delete') }}
-                                                </x-danger-button>
-
-                                                @if (session('status') === 'summary-deleted')
-                                                    <p
-                                                        x-data="{ show: true }"
-                                                        x-show="show"
-                                                        x-transition
-                                                        x-init="setTimeout(() => show = false, 2000)"
-                                                        class="text-sm text-gray-600 dark:text-gray-400"
-                                                    >{{ __('Summary Deleted.') }}</p>
-                                                @endif
-                                            </form>
-                                        </div>
                                     </div>
                                 </div>
                             @empty
@@ -346,9 +325,10 @@
                                         <b class="f-color">Preview:</b>
                                         @php
                                             $file = $portfolio->file;
-                                            $file_url = \Illuminate\Support\Facades\Storage::url("$file");
+                                            $file_url = asset('storage/' . $file);
+                                            //$file_url = \Illuminate\Support\Facades\Storage::url($file);
+                                            //$file_url = Storage::get($file);
                                             $file_ext = pathinfo($file, PATHINFO_EXTENSION);
-                                            //$file_ext = $file->extension();
                                         @endphp
 
                                         @if ( $file_ext == 'pdf' )
@@ -364,27 +344,6 @@
                                             <a class="green" href="{{ route('portfolio.edit', ['portfolio' => $portfolio->id]) }}">Edit </a>
                                         </div>
     
-                                        <div class="oneline">
-                                            <form action="{{ route('portfolio.destroy', ['portfolio' => $portfolio->id]) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-
-                                                <!-- <button type="submit" class="green">Delete</button> -->
-                                                <x-danger-button onclick="return confirm('Are you sure you want to delete this record?');" class="ms-3">
-                                                    {{ __('Delete') }}
-                                                </x-danger-button>
-
-                                                @if (session('status') === 'portfolio-deleted')
-                                                    <p
-                                                        x-data="{ show: true }"
-                                                        x-show="show"
-                                                        x-transition
-                                                        x-init="setTimeout(() => show = false, 2000)"
-                                                        class="text-sm text-gray-600 dark:text-gray-400"
-                                                    >{{ __('Portfolio Deleted.') }}</p>
-                                                @endif
-                                            </form>
-                                        </div>
                                     </div>
                                 </div>
                             @empty

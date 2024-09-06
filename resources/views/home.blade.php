@@ -10,8 +10,8 @@
     <meta content="software developer, web developer, php, sql, javascript, laravel, css, html" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/moi-favicon.jpg" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{ asset('assets/img/moi-favicon.jpg') }}" rel="icon">
+    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -19,18 +19,18 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
     <!-- Custom File -->
-    <link href="assets/css/custom.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
 
     <!-- =======================================================
     * Developer: Chisom Samson Nwachukwu
@@ -46,7 +46,7 @@
         <div class="container">
 
             <h1><a href="#index.html">Chisom Samson Nwachukwu</a></h1>
-            <h2>I am a <span>Software developer, PHP (Laravel).</span> Web Artisan</h2>
+            <h2>I am a <span>Software Developer, PHP (Laravel).</span> Web Artisan</h2>
 
             <nav id="navbar" class="navbar">
                 <ul>
@@ -57,7 +57,6 @@
                     <li><a class="nav-link" href="#testimonial">Testimonials</a></li>
                     <li><a class="nav-link" href="#contact">Contact Me</a></li>
                     <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -95,7 +94,7 @@
 
             <div class="row">
                 <div class="col-lg-4" data-aos="fade-right">
-                    <img style="border-radius: 50%;" height="100%" width="100%" src="assets/img/moi_1.jpg"
+                    <img style="border-radius: 50%;" height="100%" width="100%" src="{{ asset('assets/img/moi_1.jpg') }}"
                         class="img-fluid" alt="">
                 </div>
 
@@ -525,7 +524,7 @@
 
                                     @php
                                         $file = $resume->file;
-                                        $file_url = \Illuminate\Support\Facades\Storage::url("$file");
+                                        $file_url = asset('storage/' . $file);
                                         $file_ext = pathinfo($file, PATHINFO_EXTENSION);
                                     @endphp
 
@@ -579,7 +578,7 @@
 
                     @php
                         $file = $portfolio->file;
-                        $file_url = \Illuminate\Support\Facades\Storage::url("$file");
+                        $file_url = asset('storage/' . $file);
                         $file_ext = pathinfo($file, PATHINFO_EXTENSION);
                     @endphp
 
@@ -587,7 +586,7 @@
                         <div class="portfolio-wrap">
 
                             @if ($file_ext == 'pdf')
-                                <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="Image not available">
+                                <img src="{{ asset('assets/img/portfolio/portfolio-7.jpg') }}" class="img-fluid" alt="Image not available">
                             @else
                                 <img src="{{ $file_url }}" class="img-fluid" alt="{{ $portfolio->name }}">
                             @endif
@@ -653,7 +652,7 @@
                                     {{ $testimony->message }}
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                                <img src="{{ asset('assets/img/testimonials/testimonials-3.jpg') }}" class="testimonial-img" alt="">
                                 <h3>{{ $testimony->name }}</h3>
                                 <h4> {{ $testimony->comp_position }} </h4>
                             </div>
@@ -782,8 +781,9 @@
 
     <footer>
         <div class="credits">
-            <p>&copy; 2024. Developed by <a href="#">Yours Truly (Me)</a> with Laravel. UI by the amazing <a
-                    href="#">Mahmudur Rahman Labib</a></p>
+            <p>&copy; 2024. Developed by <a href="#">Yours Truly (Me)</a> with Laravel. 
+                    <!-- UI by the amazing <a href="#">Mahmudur Rahman Labib</a> -->
+            </p>
         </div>
     </footer>
 
@@ -792,16 +792,16 @@
 
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.html"></script>
-    <script src="assets/vendor/purecounter/purecounter.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/php-email-form/validate.html') }}"></script>
+    <script src="{{ asset('assets/vendor/purecounter/purecounter.js') }}"></script>
+    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
 
     <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
 
 </body>
 

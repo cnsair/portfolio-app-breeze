@@ -23,6 +23,28 @@
                             @csrf
                         </form>
 
+                        <div style="margin-top: 20px">
+                            <form action="{{ route('portfolio.destroy', ['portfolio' => $portfolio->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+
+                                <!-- <button type="submit" class="green">Delete</button> -->
+                                <x-danger-button onclick="return confirm('Are you sure you want to delete this record?');" class="ms-3">
+                                    {{ __('Delete') }}
+                                </x-danger-button>
+
+                                @if (session('status') === 'portfolio-deleted')
+                                    <p
+                                        x-data="{ show: true }"
+                                        x-show="show"
+                                        x-transition
+                                        x-init="setTimeout(() => show = false, 2000)"
+                                        class="text-sm text-gray-600 dark:text-gray-400"
+                                    >{{ __('Portfolio Deleted.') }}</p>
+                                @endif
+                            </form>
+                        </div>
+
                         <form method="post" action="{{ route('portfolio.update', ['portfolio' => $portfolio->id]) }}" enctype="multipart/form-data" class="mt-6 space-y-6">
                             @csrf
                             @method('patch')
