@@ -68,6 +68,10 @@
                                         <h3>{{ $summary->myname }}</h3>
                                     </li>
                                     <li>
+                                        <b class="f-color">Position:</b>
+                                        <h3>{{ $summary->position }}</h3>
+                                    </li>
+                                    <li>
                                         <b class="f-color">Biography:</b>
                                         <h3>{{ $summary->biography }}</h3>
                                     </li>

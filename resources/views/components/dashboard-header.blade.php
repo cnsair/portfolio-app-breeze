@@ -5,6 +5,7 @@
     a.pass:hover{
         color: #f8e694;
     }
+    
     .space{
         padding: 0px 20px 0px 20px;
     }
@@ -12,6 +13,7 @@
     .active{
         color: #8af742 !important;
     }
+
     .box {
         /* inline-size: 150px; */
         overflow-wrap: break-word;

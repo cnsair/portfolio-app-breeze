@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('myname');
+            $table->text('position');
             $table->text('biography');
             $table->string('address');
             $table->text('phone');

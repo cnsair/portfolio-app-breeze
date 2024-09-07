@@ -45,9 +45,15 @@
     <header id="header">
         <div class="container">
 
-            <h1><a href="#index.html">Chisom Samson Nwachukwu</a></h1>
-            <h2>I am a <span>Software Developer, PHP (Laravel).</span> Web Artisan</h2>
+            @forelse ($summary_section as $summary)
 
+                <h1><a href="#">{{ $summary->myname }}</a></h1>
+                <h2>I am a <span>{{ $summary->position }}.</span> Web Artisan</h2>
+
+            @empty
+                <p>Nothing yet. Please check back</p>
+            @endforelse
+            
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link active" href="#header">Home</a></li>
@@ -101,7 +107,7 @@
                 @forelse ($summary_section as $summary)
 
                     <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-                        <h3>Software Engineer &amp; Graphic Designer</h3>
+                        <h3>{{ $summary->position }} &amp; Graphic Designer</h3>
                         <p class="fst-italic">
                             Hello, I am {{ $summary->myname }}...<br />
 

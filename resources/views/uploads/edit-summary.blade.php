@@ -55,6 +55,12 @@
                             </div>
 
                             <div>
+                                <x-input-label for="position" :value="__('Position')" />
+                                <x-text-input id="position" name="position" type="text" class="mt-1 block w-full" required autofocus autocomplete="position" :value="old('position', $summaries->position)" />
+                                <x-input-error class="mt-2" :messages="$errors->get('position')" />
+                            </div>
+
+                            <div>
                                 <x-input-label for="biography" :value="__('Biography')" />
                                 <textarea style="background-color: rgb(17 24 39); color: #ffffff;" id="biography" name="biography" type="text" class="mt-1 block w-full" required autofocus autocomplete="biography" :value="" >{{ $summaries->biography }}</textarea>
                                 <x-input-error class="mt-2" :messages="$errors->get('biography')" />

@@ -28,8 +28,14 @@
 
                             <div>
                                 <x-input-label for="myname" :value="__('My Name')" />
-                                <x-text-input id="myname" name="myname" type="text" class="mt-1 block w-full" required autocomplete="myname" />
+                                <x-text-input id="myname" name="myname" type="text" class="mt-1 block w-full" required autocomplete="myname" autofocus />
                                 <x-input-error class="mt-2" :messages="$errors->get('myname')" />
+                            </div>
+
+                            <div>
+                                <x-input-label for="position" :value="__('Position')" />
+                                <x-text-input id="position" name="position" type="text" class="mt-1 block w-full" required autofocus autocomplete="position" />
+                                <x-input-error class="mt-2" :messages="$errors->get('position')" />
                             </div>
 
                             <div>

@@ -27,6 +27,7 @@ class SummaryController extends Controller
 
         $summaries = new Summary();
         $summaries->myname = $request->input('myname');
+        $summaries->position = $request->input('position');
         $summaries->biography = $request->input('biography');
         $summaries->address = $request->input('address');
         $summaries->phone = $request->input('phone');
@@ -58,6 +59,7 @@ class SummaryController extends Controller
             //$summaries = new Summary();
             $summaries = Summary::find($summaries);
             $summaries->myname = $request->input('myname');
+            $summaries->position = $request->input('position');
             $summaries->biography = $request->input('biography');
             $summaries->address = $request->input('address');
             $summaries->phone = $request->input('phone');
