@@ -43,6 +43,44 @@ class ResumeController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Resume $resume)
+    {
+        return view('uploads.edit-resume', [
+            'resume' => $resume 
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(ResumeRequest $request, $resume): RedirectResponse
+    {
+        $request->user()->fill($request->validated());
+
+        if ( $request == true) {
+
+            $resume = Resume::find($resume);
+
+            $resume->title = $request->input('title');
+            $resume->file = $request->file('file')->store('uploads', 'public');
+            
+            $selected_file = $request->file('file');
+            if ( !empty($selected_file) ) {
+                $resume->file = $request->file('file')->store('uploads', 'public');
+            }
+
+            $resume->update();
+
+            return Redirect::route('show')->with('status', 'resume-updated');
+        }
+        else{
+            return Redirect::route('show')->with('status', 'resume-denied');
+        }
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy($resume): RedirectResponse

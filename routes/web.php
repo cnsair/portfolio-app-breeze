@@ -49,7 +49,7 @@ Route::get('/uploads/summary', [
 //Store
 Route::post('/uploads/summary', [
     SummaryController::class, 'store'
-])->name('summaries.store');
+])->middleware(['auth', 'verified'])->name('summaries.store');
 
 //Edit page
 Route::get('/uploads/edit-summary/{summary}', [
@@ -59,12 +59,12 @@ Route::get('/uploads/edit-summary/{summary}', [
 //Update
 Route::patch('/uploads/edit-summary/{summary}', [
     SummaryController::class, 'update'
-])->name('summary.update');
+])->middleware(['auth', 'verified'])->name('summary.update');
 
 //delete
 Route::delete('/uploads/edit-summary/{summary}', [
     SummaryController::class, 'destroy'
-])->name('summary.destroy');
+])->middleware(['auth', 'verified'])->name('summary.destroy');
 
 
 
@@ -75,27 +75,27 @@ Route::delete('/uploads/edit-summary/{summary}', [
 //Create page
 Route::get('/uploads/education', [
     EducationController::class, 'create'
-])->name('education');
+])->middleware(['auth', 'verified'])->name('education');
 
 //Store
 Route::post('/uploads/education', [
     EducationController::class, 'store'
-])->name('education.store');
+])->middleware(['auth', 'verified'])->name('education.store');
 
 //Edit page
 Route::get('/uploads/edit-education/{education}', [
     EducationController::class, 'edit'
-])->name('education.edit');
+])->middleware(['auth', 'verified'])->name('education.edit');
 
 //Update
 Route::patch('/uploads/edit-education/{education}', [
     EducationController::class, 'update'
-])->name('education.update');
+])->middleware(['auth', 'verified'])->name('education.update');
 
 //delete
 Route::delete('/uploads/show{education}', [
     EducationController::class, 'destroy'
-])->name('education.destroy');
+])->middleware(['auth', 'verified'])->name('education.destroy');
 
 
 
@@ -107,27 +107,27 @@ Route::delete('/uploads/show{education}', [
 //Create Page
 Route::get('/uploads/experience', [
     ExperienceController::class, 'create'
-])->name('experience');
+])->middleware(['auth', 'verified'])->name('experience');
 
 //Store
 Route::post('/uploads/experience', [
     ExperienceController::class, 'store'
-])->name('experiences.store');
+])->middleware(['auth', 'verified'])->name('experiences.store');
 
 //Edit page
 Route::get('/uploads/edit-experience/{experience}', [
     ExperienceController::class, 'edit'
-])->name('experience.edit');
+])->middleware(['auth', 'verified'])->name('experience.edit');
 
 //Update
 Route::patch('/uploads/edit-experience/{experience}', [
     ExperienceController::class, 'update'
-])->name('experience.update');
+])->middleware(['auth', 'verified'])->name('experience.update');
 
 //delete
 Route::delete('/uploads/show/{experience}', [
     ExperienceController::class, 'destroy'
-])->name('experience.destroy');
+])->middleware(['auth', 'verified'])->name('experience.destroy');
 
 
 
@@ -141,23 +141,23 @@ Route::controller(PortfolioController::class)->group(function () {
 
     // create page
     Route::get('/uploads/portfolio', 'create')
-        ->name('portfolio');
+    ->middleware(['auth', 'verified'])->name('portfolio');
 
     //Stores value
     Route::post('/uploads/portfolio', 'store')
-        ->name('portfolio.store');
+    ->middleware(['auth', 'verified'])->name('portfolio.store');
 
     //Edit page
     Route::get('/uploads/edit-portfolio/{portfolio}', 'edit')
-        ->name('portfolio.edit');
+    ->middleware(['auth', 'verified'])->name('portfolio.edit');
 
     //Update
     Route::patch('/uploads/edit-portfolio/{portfolio}', 'update')
-        ->name('portfolio.update');
+    ->middleware(['auth', 'verified'])->name('portfolio.update');
 
     //delete
     Route::delete('/uploads/edit-portfolio/{portfolio}', 'destroy')
-        ->name('portfolio.destroy');
+    ->middleware(['auth', 'verified'])->name('portfolio.destroy');
 
 });
 
@@ -170,17 +170,27 @@ Route::controller(PortfolioController::class)->group(function () {
 //Create page
 Route::get('/uploads/resume', [
     ResumeController::class, 'create'
-])->name('resume');
+])->middleware(['auth', 'verified'])->name('resume');
 
 //Store
 Route::post('/uploads/resume', [
     ResumeController::class, 'store'
-])->name('resume.store');
+])->middleware(['auth', 'verified'])->name('resume.store');
+
+//Edit
+Route::get('/uploads/edit-resume/{resume}', [
+    ResumeController::class, 'edit'
+])->middleware(['auth', 'verified'])->name('resume.edit');
+
+//Update
+Route::patch('/uploads/edit-resume/{resume}', [
+    ResumeController::class, 'update'
+])->middleware(['auth', 'verified'])->name('resume.update');
 
 //delete
-Route::delete('/uploads/show/{resume}', [
+Route::delete('/uploads/edit-resume/{resume}', [
     ResumeController::class, 'destroy'
-])->name('resume.destroy');
+])->middleware(['auth', 'verified'])->name('resume.destroy');
 
 //=========================================
 //  CUSTOM ROUTES ENDS
@@ -200,7 +210,7 @@ Route::get('hire', function () {
 //delete
 Route::delete('/dashboard/{hire}', [
     HireController::class, 'destroy'
-])->name('hire.destroy');
+])->middleware(['auth', 'verified'])->name('hire.destroy');
 
 
 
@@ -216,7 +226,7 @@ Route::get('testimony', function () {
 //delete
 Route::delete('/dashboard{testimony}', [
     TestimonyController::class, 'destroy'
-])->name('testimony.destroy');
+])->middleware(['auth', 'verified'])->name('testimony.destroy');
 
 
 //Route to toggle betweeen Completed Task and Uncompleted Task
@@ -225,7 +235,7 @@ Route::put('/dashboard/{testimony}/toggle-approved', function (Testimony $testim
     $testimony->toggleApproved();
     return redirect()->back()->with('success','done');
     
-})->name('testimony.approved');
+})->middleware(['auth', 'verified'])->name('testimony.approved');
 
 
 //=========================================

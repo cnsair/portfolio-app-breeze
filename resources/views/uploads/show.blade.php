@@ -189,7 +189,7 @@
                                         <b class="f-color">File:</b>
                                         @php
                                             $file = $resume->file;
-                                            $file_url = \Illuminate\Support\Facades\Storage::url("$file");
+                                            $file_url = asset('storage/' . $file);
                                             $file_ext = pathinfo($file, PATHINFO_EXTENSION);
                                             //$file_ext = $file->extension();
                                         @endphp
@@ -197,31 +197,11 @@
                                         @if ( $file_ext == 'pdf' || $file_ext == 'docx' )
                                             <a href="{{ $file_url }}" download >Download PDF</a>
                                         @endif
-                                            <!-- Storage::disk('public')->url(session('$portfolio->file')) -->
                                     </li> 
                                     
-                            
                                     <div style="margin-top: 1%">
-    
                                         <div class="oneline">
-                                            <form action="{{ route('resume.destroy', ['resume' => $resume->id]) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-
-                                                <x-danger-button onclick="return confirm('Are you sure you want to delete this resume?');" class="ms-3">
-                                                    {{ __('Delete') }}
-                                                </x-danger-button>
-
-                                                @if (session('status') === 'resume-deleted')
-                                                    <p
-                                                        x-data="{ show: true }"
-                                                        x-show="show"
-                                                        x-transition
-                                                        x-init="setTimeout(() => show = false, 2000)"
-                                                        class="text-sm text-gray-600 dark:text-gray-400"
-                                                    >{{ __('Resume Deleted.') }}</p>
-                                                @endif
-                                            </form>
+                                            <a class="green" href="{{ route('resume.edit', ['resume' => $resume->id]) }}">Edit </a>
                                         </div>
                                     </div>
                                 </div>

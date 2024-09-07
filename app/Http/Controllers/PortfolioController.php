@@ -63,7 +63,7 @@ class PortfolioController extends Controller
     {
         $request->user()->fill($request->validated());
 
-          if ( $request == true) {
+        if ( $request == true) {
 
             $portfolio = Portfolio::find($portfolio);
 
