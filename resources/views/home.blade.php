@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{ 'Chisom Samson | ' . env('APP_NAME') }}</title>
+    <title>{{ 'Chisom Samson ' . env('APP_NAME') }}</title>
     <meta content="a seasoned PHP laravel software developer" name="description">
     <meta content="software developer, web developer, php, sql, javascript, laravel, css, html" name="keywords">
 
@@ -124,14 +124,14 @@
                                         <strong>WhatsApp:</strong>
                                         @php
                                             $phone = $summary->phone;
-                                            $exp_phone = explode("|", "$phone");
+                                            $exp_phone = explode(" | ", $phone);
                                         @endphp
 
-                                        @foreach ($exp_phone as $phone)
-                                            <span>
-                                                <a target="_blank" href="https://wa.me/{{ $phone }}">{{ $phone }}</a>
-                                            </span>
-                                        @endforeach
+                                        <span>
+                                            @foreach ($exp_phone as $phone)
+                                                <a target="_blank" href="https://wa.me/{{ $phone }}">{{ $phone }}</a><br/>
+                                            @endforeach
+                                        </span>
                                     </li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>City:</strong>
                                         <span><a href="#">{{ $summary->address }}</a></span>
@@ -140,15 +140,29 @@
                             </div>
                             <div class="col-lg-6">
                                 <ul>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Profession:</strong> <span>Software
-                                            engineer</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Degrees:</strong> <span>Information
-                                            Technology,<br />
-                                            Computer Science</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span><a
-                                                href="mailto:{{ $summary->email }}">{{ $summary->email }}</a></span>
+                                    <li><i class="bi bi-chevron-right"></i> 
+                                        <strong>Major:</strong> 
+                                        <span>{{ $summary->position }}</span>
                                     </li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Degrees:</strong> 
+                                        <span>Information
+                                            Technology, <br/>
+                                            Computer Science
+                                        </span>
+                                    </li>
+                                    <li><i class="bi bi-chevron-right"></i> 
+                                        <strong>Email:</strong>
+                                        @php
+                                            $email = $summary->email;
+                                            $email_exp = explode(" | ", $email);
+                                        @endphp
 
+                                        <span>
+                                            @foreach ($email_exp as $email)
+                                                <a href="mailto:{{ $email }}">{{ $email }}</a> <br/>
+                                            @endforeach
+                                        </span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -282,9 +296,9 @@
                     </div>
 
                     <div class="progress">
-                        <span class="skill">Laravel <i class="val">50%</i></span>
+                        <span class="skill">Laravel <i class="val">70%</i></span>
                         <div class="progress-bar-wrap">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0"
+                            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
                                 aria-valuemax="100">
                             </div>
                         </div>
@@ -410,8 +424,6 @@
         </div><!-- End Interests -->
 
     </section><!-- End About Section -->
-
-
 
 
 

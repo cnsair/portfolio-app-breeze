@@ -27,7 +27,7 @@ class SummaryRequest extends FormRequest
             'biography' => 'required|max:1000',
             'address' => 'required|max:100',
             'phone' => 'required|max:50',
-            'email' => 'required|max:50'
+            'email' => 'required|max:100'
         ];
     }
 }
