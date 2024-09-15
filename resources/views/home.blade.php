@@ -622,7 +622,7 @@
                                             title="{{ $portfolio->name }}"><i class="bx bx-plus"></i></a>
                                     @endif
 
-                                    <a href="{{ $portfolio->web_address ? $portfolio->web_address : "#No web address" }}"
+                                    <a href="{{ $portfolio->web_address ? 'https://' . $portfolio->web_address : "" }}"
                                         target="_blank" data-gallery="portfolioDetailsGallery"
                                         data-glightbox="type: external" class="portfolio-details-lightbox"
                                         title="Portfolio Details"><i class="bx bx-link"></i></a>

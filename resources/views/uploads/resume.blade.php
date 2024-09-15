@@ -29,13 +29,13 @@
 
                             <div>
                                 <x-input-label for="title" :value="__('Title')" />
-                                <x-text-input id="title" name="title" type="text" class="mt-1 block w-full" required autocomplete="title" />
+                                <x-text-input id="title" name="title" type="text" :value="old('title')" class="mt-1 block w-full" required autocomplete="title" />
                                 <x-input-error class="mt-2" :messages="$errors->get('title')" />
                             </div>
 
                             <div>
                                 <x-input-label for="file" :value="__('File')" />
-                                <x-text-input id="file" name="file" type="file" class="mt-1 block w-full" required autocomplete="file" />
+                                <x-text-input id="file" name="file" type="file" :value="old('file')" class="mt-1 block w-full" required autocomplete="file" />
                                 <x-input-error class="mt-2" :messages="$errors->get('file')" />
                             </div>
 

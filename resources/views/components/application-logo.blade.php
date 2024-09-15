@@ -1,5 +1,5 @@
 <div>
-    <img src="{{ asset('assets/img/moi_3.png') }}" width="10%" style="border-radius: 50%;">
+    <img src="{{ asset('assets/img/moi_3.png') }}" width="50px" style="border-radius: 50%;">
 </div>
 
 <!-- <svg viewBox="0 0 316 316" xmlns="http://www.w3.org/2000/svg" {{ $attributes }}>

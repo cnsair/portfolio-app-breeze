@@ -9,11 +9,12 @@ class Education extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    
+    // public const StatusSelect = [
+    //     '1' = 'Currently Attending',
+    //     '0' = 'Graduated',
+    // ];
+
     protected $fillable = [
         'status',
         'date',

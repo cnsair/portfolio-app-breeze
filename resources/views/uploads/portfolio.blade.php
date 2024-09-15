@@ -29,19 +29,19 @@
 
                             <div>
                                 <x-input-label for="name" :value="__('Name')" />
-                                <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" required autocomplete="name" />
+                                <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name')"  required autocomplete="name" />
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
                             </div>
 
                             <div>
                                 <x-input-label for="web_address" :value="__('Web Address')" />
-                                <x-text-input id="web_address" name="web_address" type="text" class="mt-1 block w-full" autocomplete="web_address" />
+                                <x-text-input id="web_address" name="web_address" type="text" :value="old('web_address')" class="mt-1 block w-full" autocomplete="web_address" />
                                 <x-input-error class="mt-2" :messages="$errors->get('web_address')" />
                             </div>
 
                             <div>
                                 <x-input-label for="description" :value="__('Description')" />
-                                <textarea style="background-color: rgb(17 24 39); color: #ffffff;" id="description" name="description" class="mt-1 block w-full" autofocus autocomplete="description"></textarea>
+                                <textarea style="background-color: rgb(17 24 39); color: #ffffff;" id="description" name="description" class="mt-1 block w-full" autofocus autocomplete="description">{{ old('description')}}</textarea>
                                 <x-input-error class="mt-2" :messages="$errors->get('description')" />
                             </div>
 
