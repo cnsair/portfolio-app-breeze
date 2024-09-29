@@ -6,7 +6,7 @@ use App\Models\Hire;
 use App\Models\Testimony;
 use Illuminate\Http\Request;
 
-class landingpageController extends Controller
+class LandingpageController extends Controller
 {
     //Controller that renders Testimonies & Hire
     public function showInLandingpage(){
