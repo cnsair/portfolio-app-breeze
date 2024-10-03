@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SummaryRequest;
 use App\Models\Summary;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class SummaryController extends Controller

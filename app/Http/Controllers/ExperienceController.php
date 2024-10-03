@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ExperienceRequest;
 use App\Models\Experience;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class ExperienceController extends Controller

@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PortfolioRequest;
 use App\Models\Portfolio;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
