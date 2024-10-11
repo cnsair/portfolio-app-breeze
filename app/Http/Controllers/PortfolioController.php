@@ -6,6 +6,7 @@ use App\Http\Requests\PortfolioRequest;
 use App\Models\Portfolio;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
@@ -91,7 +92,9 @@ class PortfolioController extends Controller
     {
         $portfolio = Portfolio::find($portfolio);
         $portfolio->delete();
-        //Storage::delete($portfolio);
+        
+        // Delete the profile picture from storage
+        Storage::disk('public')->delete($portfolio->file);
 
         return Redirect::route('show')->with('status', 'portfolio-deleted');
     }

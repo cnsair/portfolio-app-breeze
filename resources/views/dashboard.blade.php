@@ -64,7 +64,7 @@
                                         <h3>{{ $testimony->message }}</h3>
                                     </li>
                             
-                                    <div style="margin-top: 1%">
+                                    <div class="mt-4">
 
                                         <div class="oneline">
    
@@ -137,7 +137,7 @@
                                         <h3>{{ $hire->message }}</h3>
                                     </li>
                             
-                                    <div style="margin-top: 1%">
+                                    <div class="mt-4">
     
                                         <div class="oneline">
                                             <form action="{{ route('hire.destroy', ['hire' => $hire->id]) }}" method="POST">
