@@ -73,6 +73,7 @@ class PortfolioController extends Controller
             
             $selected_file = $request->file('file');
             if ( !empty($selected_file) ) {
+                Storage::disk('public')->delete($portfolio->file); //delete old file
                 $portfolio->file = $request->file('file')->store('uploads', 'public');
             }
 

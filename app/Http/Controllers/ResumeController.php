@@ -6,6 +6,7 @@ use App\Http\Requests\ResumeRequest;
 use App\Models\Resume;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
 {
@@ -67,6 +68,7 @@ class ResumeController extends Controller
             
             $selected_file = $request->file('file');
             if ( !empty($selected_file) ) {
+                Storage::disk('public')->delete($resume->file); //delete old file
                 $resume->file = $request->file('file')->store('uploads', 'public');
             }
 
@@ -86,6 +88,9 @@ class ResumeController extends Controller
     {
         $resume = Resume::find($resume);
         $resume->delete();
+
+        // Delete the profile picture from storage
+        Storage::disk('public')->delete($resume->file);
 
         return Redirect::route('show')->with('status', 'resume-deleted');
     }
