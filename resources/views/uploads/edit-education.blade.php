@@ -31,8 +31,8 @@
                                 <x-input-label for="status" :value="__('Status')" />
                                 
                                 <select style="background-color: rgb(17 24 39); color: #ffffff;" name="status" :value="old('status', $education->status)" required>
-                                    <option value="1">Currently Attending</option>
-                                    <option value="0">Graduated</option>                                   
+                                    <option {{ (old('status', $education->status) == 1) ? 'selected' : '' }} value="1">Currently Attending</option>
+                                    <option {{ (old('status', $education->status) == 0) ? 'selected' : '' }} value="0">Graduated</option>                                   
                                 </select>
                                 <x-input-error class="mt-2" :messages="$errors->get('status')" />
                                 @error('status')<p class="error">{{ $message }}</p> @enderror

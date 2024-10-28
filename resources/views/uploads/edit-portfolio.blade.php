@@ -69,10 +69,10 @@
 
                             <div>
                                 <x-input-label for="project" :value="__('Project')" />
-                                <select style="background-color: rgb(17 24 39); color: #ffffff;" name="project" :value="old('status', $portfolio->project)" required>
-                                    <option value="web">Web Application</option>
-                                    <option value="graphics">Graphics</option>
-                                    <option value="others">Others</option>                                
+                                <select style="background-color: rgb(17 24 39); color: #ffffff;" name="project" :value="old('project', $portfolio->project)" required>
+                                    <option {{ (old('project', $portfolio->project) == 'web') ? 'selected' : '' }} value="web">Web Application</option>
+                                    <option {{ (old('project', $portfolio->project) == 'graphics') ? 'selected' : '' }} value="graphics">Graphics</option>
+                                    <option {{ (old('project', $portfolio->project) == 'others') ? 'selected' : '' }} value="others">Others</option>                                
                                 </select>
                                 <x-input-error class="mt-2" :messages="$errors->get('project')" />
                             </div>
@@ -80,7 +80,6 @@
                             <div>
                                 <x-input-label for="file" :value="__('File')" />
                                 <x-text-input id="file" name="file" type="file" class="mt-1 block w-full" autocomplete="file" />
-                                <!-- <x-text-input name="file_holder" type="hidden" class="mt-1 block w-full" autocomplete="file" :value="old('status', $portfolio->file)" /> -->
                                 <x-input-error class="mt-2" :messages="$errors->get('file')" />
                             </div>
 

@@ -23,8 +23,8 @@ class EducationRequest extends FormRequest
     {
         return [
             'status' => 'required|max:2',
-            'date' => 'required|max:20',
-            'course' => 'required|max:40',
+            'date' => 'required|max:100',
+            'course' => 'required|max:100',
             'school' => 'required|max:100',
             'activity' => 'required|max:500'
         ];

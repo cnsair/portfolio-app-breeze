@@ -23,7 +23,7 @@ class SummaryRequest extends FormRequest
     {
         return [
             'myname' => 'required|min:2|max:50',
-            'position' => 'required|min:2|max:50',
+            'position' => 'required|min:2|max:100',
             'biography' => 'required|max:1000',
             'address' => 'required|max:100',
             'phone' => 'required|max:50',

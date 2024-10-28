@@ -23,7 +23,7 @@ class ExperienceRequest extends FormRequest
     {
         return [
             'role' => 'required|max:50',
-            'date' => 'required|max:20',
+            'date' => 'required|max:100',
             'location' => 'required|max:200',
             'activity' => 'required|max:1000'
         ];
