@@ -103,7 +103,6 @@
                                         class="text-sm text-red-600 dark:text-red-300"
                                     >{{ __('Something went wrong!') }}</p>
                                 @endif
-
                             </div>
                         </form>
                     </section>
