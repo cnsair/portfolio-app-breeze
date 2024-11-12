@@ -431,8 +431,6 @@
 
 
 
-
-
     <!-- ======= Resume Section ======= -->
     <section id="resume" class="resume">
         <div class="container">
@@ -466,35 +464,33 @@
                         <p>Nothing. Please check back</p>
                     @endforelse
 
-
                     <h3 class="resume-title">Education</h3>
 
                     @forelse ($education_section as $education)
+                        <div class="resume-item">
+                            <h4>
+                                @if ($education->status == 1)
+                                    In-View
+                                @else
+                                    Graduated 
+                                @endif
+                            </h4>
+                            <h5>{{ $education->date }}</h5>
+                            <p><em>{{ $education->course }}</em></p>
+                            <p><em>{{ $education->school }}</em></p>
+                            <p>
+                            <ul>
+                                @php
+                                    $edu = $education->activity;
+                                    $explode = explode('|', $edu);
+                                @endphp
 
-                                        <div class="resume-item">
-                                            <h4>
-                                                @if ($education->status == 1)
-                                                    In-View
-                                                @else
-                                                    Graduated 
-                                                @endif
-                                            </h4>
-                                            <h5>{{ $education->date }}</h5>
-                                            <p><em>{{ $education->course }}</em></p>
-                                            <p><em>{{ $education->school }}</em></p>
-                                            <p>
-                                            <ul>
-                                                @php
-                                                    $edu = $education->activity;
-                                                    $explode = explode('|', $edu);
-                                                @endphp
-
-                                                @foreach ($explode as $edu)
-                                                    <li>{{ $edu }}</li>
-                                                @endforeach
-                                            </ul>
-                                            </p>
-                                        </div>
+                                @foreach ($explode as $edu)
+                                    <li>{{ $edu }}</li>
+                                @endforeach
+                            </ul>
+                            </p>
+                        </div>
 
                     @empty
                         <p>Nothing. Please check back</p>
@@ -507,25 +503,23 @@
                     <h3 class="resume-title">Professional Experience</h3>
 
                     @forelse ($experience_section as $experience)
+                        <div class="resume-item">
+                            <h4>{{ $experience->role }}</h4>
+                            <h5>{{ $experience->date }}</h5>
+                            <p><em>{{ $experience->location }}</em></p>
+                            <p>
+                            <ul>
+                                @php
+                                    $pro = $experience->activity;
+                                    $explode = explode('|', $pro);
+                                @endphp
 
-                                        <div class="resume-item">
-                                            <h4>{{ $experience->role }}</h4>
-                                            <h5>{{ $experience->date }}</h5>
-                                            <p><em>{{ $experience->location }}</em></p>
-                                            <p>
-                                            <ul>
-                                                @php
-                                                    $pro = $experience->activity;
-                                                    $explode = explode('|', $pro);
-                                                @endphp
-
-                                                @foreach ($explode as $prof)
-                                                    <li>{{ $prof }}</li>
-                                                @endforeach
-                                            </ul>
-                                            </p>
-                                        </div>
-
+                                @foreach ($explode as $prof)
+                                    <li>{{ $prof }}</li>
+                                @endforeach
+                            </ul>
+                            </p>
+                        </div>
                     @empty
                         <p>Nothing. Please check back</p>
                     @endforelse
@@ -536,22 +530,21 @@
                         RESUME SECTION 
         ======================================-->
                 @forelse ($resume_section as $resume)
+                    <div class="resume-item">
+                        <h6>{{ $resume->title }}</h6>
 
-                                <div class="resume-item">
-                                    <h6>{{ $resume->title }}</h6>
+                        @php
+                            $file = $resume->file;
+                            $file_url = asset('storage/' . $file);
+                            $file_ext = pathinfo($file, PATHINFO_EXTENSION);
+                        @endphp
 
-                                    @php
-                                        $file = $resume->file;
-                                        $file_url = asset('storage/' . $file);
-                                        $file_ext = pathinfo($file, PATHINFO_EXTENSION);
-                                    @endphp
-
-                                    @if ($file_ext == 'pdf' || $file_ext == 'docx')
-                                        <a href="{{ $file_url }}" class="text-center" download>
-                                            <button type="button">Download Resume</button>
-                                        </a>
-                                    @endif
-                                </div>
+                        @if ($file_ext == 'pdf' || $file_ext == 'docx')
+                            <a href="{{ $file_url }}" class="text-center" download>
+                                <button type="button">Download Resume</button>
+                            </a>
+                        @endif
+                    </div>
                 @empty
                     <p>Nothing. Please check back</p>
                 @endforelse
@@ -560,8 +553,6 @@
 
         </div>
     </section><!-- End Resume Section -->
-
-
 
 
 
@@ -646,8 +637,6 @@
 
 
 
-
-
     <!-- ======= Resume Section ======= -->
     <section id="testimonial" class="resume">
 
@@ -688,7 +677,6 @@
 
         </div><!-- End Testimonials  -->
 
-
         <div class="text-center margin-btm">
             <a href="{{ route('testimony') }}">
                 <button type="button">Give a testimony!</button>
@@ -714,67 +702,67 @@
 
             @forelse ($summary_section as $summary)
 
-                        <div class="row mt-2">
+                <div class="row mt-2">
 
-                            <div class="col-md-6 d-flex align-items-stretch">
-                                <div class="info-box">
-                                    <i class="bx bx-map"></i>
-                                    <h3>My Address</h3>
-                                    <p> <a href="#">{{ $summary->address }}</a></p>
-                                </div>
+                    <div class="col-md-6 d-flex align-items-stretch">
+                        <div class="info-box">
+                            <i class="bx bx-map"></i>
+                            <h3>My Address</h3>
+                            <p> <a href="#">{{ $summary->address }}</a></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
+                        <div class="info-box">
+                            <i class="bx bx-share-alt"></i>
+                            <h3>Social Profiles</h3>
+                            <div class="social-links">
+                                <a target="_blank" href="https://g.dev/cnsair" class="google"><i
+                                        class="bi bi-google"></i></a>
+                                <a target="_blank" href="https://t.me/cnsair/" class="telegram"><i
+                                        class="bi bi-telegram"></i></a>
+                                <a target="_blank" href="https://instagram.com/cnsair" class="instagram"><i
+                                        class="bi bi-instagram"></i></a>
+                                <a target="_blank" href="https://twitter.com/cnsair" class="twitter"><i
+                                        class="bi bi-twitter"></i></a>
+                                <a target="_blank" href="https://facebook.com/samson.chisom/" class="facebook"><i
+                                        class="bi bi-facebook"></i></a>
+                                <a target="_blank" href="https://www.github.com/cnsair" class="github"><i
+                                        class="bi bi-github"></i></a>
+                                <a target="_blank" href="https://www.linkedin.com/in/samson-chisom/" class="linkedin"><i
+                                        class="bi bi-linkedin"></i></a>
+                                <a target="_blank" href="https://www.reddit.com/user/cnsair" class="reddit"><i
+                                        class="bi bi-reddit"></i></a>
                             </div>
+                        </div>
+                    </div>
 
-                            <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
-                                <div class="info-box">
-                                    <i class="bx bx-share-alt"></i>
-                                    <h3>Social Profiles</h3>
-                                    <div class="social-links">
-                                        <a target="_blank" href="https://g.dev/cnsair" class="google"><i
-                                                class="bi bi-google"></i></a>
-                                        <a target="_blank" href="https://t.me/cnsair/" class="telegram"><i
-                                                class="bi bi-telegram"></i></a>
-                                        <a target="_blank" href="https://instagram.com/cnsair" class="instagram"><i
-                                                class="bi bi-instagram"></i></a>
-                                        <a target="_blank" href="https://twitter.com/cnsair" class="twitter"><i
-                                                class="bi bi-twitter"></i></a>
-                                        <a target="_blank" href="https://facebook.com/samson.chisom/" class="facebook"><i
-                                                class="bi bi-facebook"></i></a>
-                                        <a target="_blank" href="https://www.github.com/cnsair" class="github"><i
-                                                class="bi bi-github"></i></a>
-                                        <a target="_blank" href="https://www.linkedin.com/in/samson-chisom/" class="linkedin"><i
-                                                class="bi bi-linkedin"></i></a>
-                                        <a target="_blank" href="https://www.reddit.com/user/cnsair" class="reddit"><i
-                                                class="bi bi-reddit"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-md-6 mt-4 d-flex align-items-stretch">
+                        <div class="info-box">
+                            <i class="bx bx-envelope"></i>
+                            <h3>Email Me</h3>
+                            <p><a href="mailto:{{ $summary->email }}">{{ $summary->email }}</a></p>
+                        </div>
+                    </div>
 
-                            <div class="col-md-6 mt-4 d-flex align-items-stretch">
-                                <div class="info-box">
-                                    <i class="bx bx-envelope"></i>
-                                    <h3>Email Me</h3>
-                                    <p><a href="mailto:{{ $summary->email }}">{{ $summary->email }}</a></p>
-                                </div>
-                            </div>
+                    <div class="col-md-6 mt-4 d-flex align-items-stretch">
+                        <div class="info-box">
+                            <i class="bx bx-phone-call"></i>
+                            <h3>Call Me</h3>
 
-                            <div class="col-md-6 mt-4 d-flex align-items-stretch">
-                                <div class="info-box">
-                                    <i class="bx bx-phone-call"></i>
-                                    <h3>Call Me</h3>
+                            @php
+                                $phone = $summary->phone;
+                                $exp_phone = explode("|", "$phone");
+                            @endphp
 
-                                    @php
-                                        $phone = $summary->phone;
-                                        $exp_phone = explode("|", "$phone");
-                                    @endphp
-
-                                    @foreach ($exp_phone as $phone)
-                                        <p><a href="tel:{{ $phone }}">{{ $phone }}</a></p>
-                                    @endforeach
-
-                                </div>
-                            </div>
+                            @foreach ($exp_phone as $phone)
+                                <p><a href="tel:{{ $phone }}">{{ $phone }}</a></p>
+                            @endforeach
 
                         </div>
+                    </div>
+
+                </div>
 
             @empty
                 <p>Nothing. Please check back</p>
@@ -782,13 +770,11 @@
 
         </div><!-- container -->
 
-
         <div class="text-center margin-btm">
             <a href="{{ route('hire') }}">
                 <button type="button">Hire or reach out to me!</button>
             </a>
         </div>
-
 
     </section><!-- End Contact Section -->
 
@@ -799,8 +785,9 @@
 
     <footer>
         <div class="credits">
-            <p>&copy; 2024. Developed by <a href="#">Yours Truly (Me)</a> with Laravel. 
-                    <!-- UI by the amazing <a href="#">Mahmudur Rahman Labib</a> -->
+            <p>
+                &copy; <script>document.write(new Date().getFullYear());</script> 
+                2024. Developed by <a href="#">Yours Truly (Me)</a> with Laravel.
             </p>
         </div>
     </footer>
