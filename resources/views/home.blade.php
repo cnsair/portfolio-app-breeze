@@ -474,9 +474,9 @@
                                         <div class="resume-item">
                                             <h4>
                                                 @if ($education->status == 1)
-                                                    Attending College
+                                                    In-View
                                                 @else
-                                                    Graduated College
+                                                    Graduated 
                                                 @endif
                                             </h4>
                                             <h5>{{ $education->date }}</h5>
