@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="a seasoned PHP laravel software developer" name="description">
+        <meta content="software developer, web developer, php, sql, javascript, laravel, css, html" name="keywords">
 
         <!-- Favicons -->
         <link href="{{ asset('assets/img/moi-favicon.jpg') }}" rel="icon">
