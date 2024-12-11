@@ -6,21 +6,21 @@
         @csrf
 
         <!-- Full Name -->
-        <div>
+        <div class="mt-4">
             <x-input-label for="name" :value="__('Full name')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="username" placeholder="e.g., Chisom Samson Nwachukwu" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
-        <div>
+        <div class="mt-4">
             <x-input-label for="email" :value="__('Email (Optional)')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" autofocus autocomplete="username" placeholder="e.g., info@chisomsamson.me" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Message-->
-        <div>
+        <div class="mt-4">
             <x-input-label for="message" :value="__('Enter Message')" />
             <textarea id="message" style="background-color: rgb(17 24 39); color: #ffffff;"  class="block mt-1 w-full" name="message" :value="old('message')" required autofocus placeholder="500 characters max" autocomplete="message"></textarea>
             <x-input-error :messages="$errors->get('message')" class="mt-2" />
