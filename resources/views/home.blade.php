@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{ 'Chisom Samson ' . env('APP_NAME') }}</title>
-    <meta content="a seasoned PHP laravel software developer" name="description">
-    <meta content="software developer, web developer, php, sql, javascript, laravel, css, html" name="keywords">
+    <title>{{ 'Chisom Samson' . env('APP_NAME') }}</title>
+    <meta content="a seasoned PHP-Laravel & Python developer - Web Artisan." name="description">
+    <meta content="software developer, web developer, web artisan, php, python, mvc, sql, javascript, laravel, css, html" name="keywords">
 
     <!-- Favicons -->
     <link href="{{ asset('assets/img/moi-favicon.jpg') }}" rel="icon">
@@ -48,7 +48,7 @@
             @forelse ($summary_section as $summary)
 
                 <h1><a href="#">{{ $summary->myname }}</a></h1>
-                <h2>I am a <span>{{ $summary->position }}.</span> Web Artisan</h2>
+                <h2>I am a <span>{{ $summary->position }}.</span> Web Artisan.</h2>
 
             @empty
                 <p>Nothing yet. Please check back</p>
@@ -70,19 +70,17 @@
             <div class="social-links">
                 <a target="_blank" href="https://g.dev/cnsair" class="google"><i class="bi bi-google"></i></a>
                 <a target="_blank" href="https://t.me/cnsair/" class="telegram"><i class="bi bi-telegram"></i></a>
-                <a target="_blank" href="https://instagram.com/cnsair" class="instagram"><i
-                        class="bi bi-instagram"></i></a>
+                <a target="_blank" href="https://instagram.com/cnsair" class="instagram"><i class="bi bi-instagram"></i></a>
                 <a target="_blank" href="https://twitter.com/cnsair" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a target="_blank" href="https://facebook.com/samson.chisom/" class="facebook"><i
-                        class="bi bi-facebook"></i></a>
+                <a target="_blank" href="https://facebook.com/samson.chisom/" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a target="_blank" href="https://www.github.com/cnsair" class="github"><i class="bi bi-github"></i></a>
-                <a target="_blank" href="https://www.linkedin.com/in/samson-chisom/" class="linkedin"><i
-                        class="bi bi-linkedin"></i></a>
-                <a target="_blank" href="https://www.reddit.com/user/cnsair" class="reddit"><i
-                        class="bi bi-reddit"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/samson-chisom/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                <a target="_blank" href="https://www.reddit.com/user/cnsair" class="reddit"><i class="bi bi-reddit"></i></a>
             </div>
         </div>
     </header><!-- End Header -->
+
+
 
 
 
@@ -145,8 +143,8 @@
                                         <span>{{ $summary->position }}</span>
                                     </li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Degrees:</strong> 
-                                        <span>Information
-                                            Technology, <br/>
+                                        <span>
+                                            Information Technology, <br/>
                                             Computer Science
                                         </span>
                                     </li>
@@ -168,8 +166,7 @@
                         </div>
                         <p>
                             Currently a Technical Co-founder at Africa Blockchain Consortium & Digital Economy. I’m
-                            interested in
-                            Blockchain, ML, AI, Advanced Algorithms.
+                            interested in Blockchain, ML, AI, Advanced Algorithms.
                         </p>
                         <p>
                             I am also interested in Cyber Security and I like to play with Hardware. <br>
@@ -677,7 +674,7 @@
 
         </div><!-- End Testimonials  -->
 
-        <div class="text-center margin-btm">
+        <div class="text-center mb-4">
             <a href="{{ route('testimony') }}">
                 <button type="button">Give a testimony!</button>
             </a>
@@ -761,7 +758,6 @@
 
                         </div>
                     </div>
-
                 </div>
 
             @empty
@@ -770,7 +766,7 @@
 
         </div><!-- container -->
 
-        <div class="text-center margin-btm">
+        <div class="text-center mb-4">
             <a href="{{ route('hire') }}">
                 <button type="button">Hire or reach out to me!</button>
             </a>
@@ -787,14 +783,10 @@
         <div class="credits">
             <p>
                 &copy; <script>document.write(new Date().getFullYear());</script> 
-                2024. Developed by <a href="#">Yours Truly (Me)</a> with Laravel.
+                Developed by <a href="#chisomsamson.me">Yours Truly (Me)</a> with Laravel.
             </p>
         </div>
     </footer>
-
-
-
-
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
